@@ -1,0 +1,113 @@
+# .zshrc.local
+# This file is used together with grml-zsh's .zshrc
+
+export HISTFILE=~/.zsh-history
+export HISTSIZE=100000
+export SAVEHIST=$HISTSIZE
+
+export MAKEFLAGS="-j4"
+export EDITOR="vim"
+
+export MANWIDTH=${MANWIDTH:-80}
+
+setopt auto_cd              # Change dir without cd
+setopt complete_in_word     # Not just at the end
+setopt always_to_end        # When complete from middle, move cursor
+setopt no_match             # Show error if pattern has no matches
+setopt no_beep              # Disable beeps
+setopt list_types           # Show types in completion
+setopt hist_ignore_all_dups # Ignore duplicates in command history
+setopt hist_ignore_space    # Don't add commands preceded by space to history
+setopt hist_reduce_blanks
+setopt append_history share_history inc_append_history
+setopt correct              # Command correction
+setopt no_clobber           # warning if file exists (cat /dev/null > ~/.zshrc)
+
+# use the vi navigation keys (hjkl) besides cursor keys in menu completion
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+
+alias m='make'
+
+alias gst='git status'
+alias gada='git add -A'
+alias gd='git diff --color=auto'
+alias gcom='git commit'
+alias gcom!='git commit --amend'
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all"
+alias gp='git push -u origin master'
+
+set -o vi
+
+# Prompt
+# ------------------------------------------------------------------------------
+prompt off
+local user_color="green"; [ $UID -eq 0 ] && user_color="red"
+local user="%{$fg_bold[$user_color]%}%n%{$reset_color%}"
+local dir="%{$fg_bold[blue]%}%1~%{$reset_color%}"
+
+PROMPT="$user $dir %{$fg_bold[$user_color]%}$%{$reset_color%} "
+
+ZSH_THEME_GIT_PROMPT_ADDED="%{$fg_bold[green]%}+"
+ZSH_THEME_GIT_PROMPT_MODIFIED="%{$fg_bold[blue]%}*"
+ZSH_THEME_GIT_PROMPT_DELETED="%{$fg_bold[red]%}-"
+ZSH_THEME_GIT_PROMPT_STASHED="%{$fg_bold[yellow]%}#"
+ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg_bold[magenta]%}R"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[cyan]%}?"
+
+function git_get_branch() {
+	git symbolic-ref HEAD 2> /dev/null | sed 's|refs/heads/||'
+}
+function git_prompt_status() {
+	INDEX=$(command git status --porcelain -b 2> /dev/null)
+	STATUS=""
+	if $(echo "$INDEX" | grep -E '^\?\? ' &> /dev/null); then
+		STATUS="$ZSH_THEME_GIT_PROMPT_UNTRACKED$STATUS"
+	fi
+	if $(echo "$INDEX" | grep '^A ' &> /dev/null); then
+		STATUS="$ZSH_THEME_GIT_PROMPT_ADDED$STATUS"
+	elif $(echo "$INDEX" | grep '^M ' &> /dev/null); then
+		STATUS="$ZSH_THEME_GIT_PROMPT_ADDED$STATUS"
+	fi
+	if $(echo "$INDEX" | grep '^ M ' &> /dev/null); then
+		STATUS="$ZSH_THEME_GIT_PROMPT_MODIFIED$STATUS"
+	elif $(echo "$INDEX" | grep '^AM ' &> /dev/null); then
+		STATUS="$ZSH_THEME_GIT_PROMPT_MODIFIED$STATUS"
+	elif $(echo "$INDEX" | grep '^ T ' &> /dev/null); then
+		STATUS="$ZSH_THEME_GIT_PROMPT_MODIFIED$STATUS"
+	fi
+	if $(echo "$INDEX" | grep '^R ' &> /dev/null); then
+		STATUS="$ZSH_THEME_GIT_PROMPT_RENAMED$STATUS"
+	fi
+	if $(echo "$INDEX" | grep '^ D ' &> /dev/null); then
+		STATUS="$ZSH_THEME_GIT_PROMPT_DELETED$STATUS"
+	elif $(echo "$INDEX" | grep '^D ' &> /dev/null); then
+		STATUS="$ZSH_THEME_GIT_PROMPT_DELETED$STATUS"
+	elif $(echo "$INDEX" | grep '^AD ' &> /dev/null); then
+		STATUS="$ZSH_THEME_GIT_PROMPT_DELETED$STATUS"
+	fi
+	if $(command git rev-parse --verify refs/stash >/dev/null 2>&1); then
+		STATUS="$ZSH_THEME_GIT_PROMPT_STASHED$STATUS"
+	fi
+	echo $STATUS
+}
+
+function precmd {
+	local return_code="%{$fg_bold[red]%}%(?..%? ↵)%{$reset_color%} "
+
+	local fromvim=""
+	if [[ $FROMVIM -eq 1 ]] fromvim="%{$fg[green]%}Vim%{$reset_color%} "
+
+	local gitness=""
+	[[ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = "true" ]] &&
+		gitness="$(git_get_branch)$(git_prompt_status)%{$reset_color%}"
+
+	RPROMPT="${return_code}${fromvim}${gitness}"
+}
+
+function mdd() {
+	mkdir -p $1 && cd $1
+}
+

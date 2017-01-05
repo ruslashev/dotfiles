@@ -2,8 +2,6 @@
 
 # Credit to https://github.com/nicksp/dotfiles/blob/master/setup.sh
 
-wget -O zshrc http://git.grml.org/f/grml-etc-core/etc/zsh/zshrc
-
 print_result() {
 	[[ $1 -eq 0 ]] \
 		&& print_success "$2" \

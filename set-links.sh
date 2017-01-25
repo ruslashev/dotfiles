@@ -15,6 +15,7 @@ print_error() {
 }
 
 declare -a dotfiles=(
+	'alacritty.yml'
 	'ctags'
 	'gitignore'
 	'gvimrc'

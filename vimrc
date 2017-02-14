@@ -46,7 +46,7 @@ let g:html_indent_style1 = "inc"
 let g:syntastic_check_on_open = 1
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 let g:syntastic_error_symbol = '✘☛'
-let g:syntastic_stl_format = '%E{✗ %fe Σ(%e)}%B{ | }%W{⚠ %fw Σ(%w)}'
+let g:syntastic_stl_format = '%E{✗ %fe Σ:%e}%B{ | }%W{⚠ %fw Σ:%w}'
 let g:syntastic_style_error_symbol = '✗~'
 let g:syntastic_style_warning_symbol = '⚠~'
 let g:syntastic_warning_symbol = '⚠☛'
@@ -109,6 +109,7 @@ nmap <Leader>l :exe "tabn " . g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 " Open C++ header in vsplit in every tab
 nmap <Leader>h :tabdo if filereadable(expand("%:r") . ".hpp") \| vs `=expand("%:r") . ".hpp"` \| endif<CR>:tabdo if filereadable(expand("%:r") . ".hh") \| vs `=expand("%:r") . ".hh"` \| endif<CR>:tabdo if filereadable(expand("%:r") . ".h") \| vs `=expand("%:r") . ".h"` \| endif<CR>:silent tabfirst<CR>
+nmap <Leader>H :tabdo if filereadable(expand("%:r") . ".hpp") \| sp `=expand("%:r") . ".hpp"` \| endif<CR>:tabdo if filereadable(expand("%:r") . ".hh") \| sp `=expand("%:r") . ".hh"` \| endif<CR>:tabdo if filereadable(expand("%:r") . ".h") \| sp `=expand("%:r") . ".h"` \| endif<CR>:silent tabfirst<CR>
 nmap <Leader>w :w<CR>
 
 nmap <Leader>o :CtrlPBuffer<CR>

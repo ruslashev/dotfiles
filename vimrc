@@ -208,7 +208,7 @@ augroup linenumbers
 	au WinLeave *    setlocal nornu
 augroup END
 
-autocmd FileType erlang let b:printf_pattern = 'io:format("%p", [%s]),'
+autocmd FileType erlang let b:printf_pattern = 'io:format("%p~n", [%s]),'
 
 " Cosmetic =====================================================================
 if (&t_Co > 8 || has("gui_running")) && !exists("syntax_on")

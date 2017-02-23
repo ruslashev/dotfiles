@@ -1,3 +1,6 @@
+env:
+  TERM: rxvt-unicode-256color
+
 dpi:
   x: 82
   y: 82
@@ -55,6 +58,10 @@ colors:
     magenta: '0x6c71c4'
     cyan:    '0x93a1a1'
     white:   '0xfdf6e3'
+
+visual_bell:
+  animation: EaseOut
+  duration: 1000
 
 # Key bindings
 #
@@ -148,8 +155,12 @@ key_bindings:
 mouse_bindings:
   - { mouse: Middle, action: PasteSelection }
 
-# Shell
-#
-# You can set this to a path to your favorite shell, e.g. /bin/fish
-shell:
+mouse:
+  double_click: { threshold: 300 }
+  triple_click: { threshold: 300 }
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>"
+
+hide_cursor_when_typing: false
 

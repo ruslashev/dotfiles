@@ -9,7 +9,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'mptre/vim-printf'
 Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/syntastic'
-Plug 'Shougo/neocomplete.vim'
+" Plug 'Shougo/neocomplete.vim'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'sjl/gundo.vim'
 Plug 'tikhomirov/vim-glsl'
@@ -20,6 +20,7 @@ Plug 'travitch/hasksyn', { 'for': 'haskell' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-erlang/vim-erlang-runtime', { 'for': 'erlang' }
+Plug 'maralla/completor.vim'
 
 call plug#end()
 
@@ -36,7 +37,9 @@ let g:airline_left_sep = ''
 let g:airline_right_alt_sep = '|'
 let g:airline_right_sep = ''
 let g:airline_theme = 'solarized'
- "
+
+let g:completor_clang_binary = '/usr/bin/clang'
+
 " Proper HTML autoindentation
 let g:html_indent_inctags = "head,html,body,p,table,tbody,div,script,section"
 let g:html_indent_inctags += ",h1,h2,h3,li"
@@ -57,10 +60,10 @@ if executable('ag')
 	let g:ctrlp_use_caching = 0
 endif
 
-let g:acp_enableAtStartup = 0
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 2
+" let g:acp_enableAtStartup = 0
+" let g:neocomplete#enable_at_startup = 1
+" let g:neocomplete#enable_smart_case = 1
+" let g:neocomplete#sources#syntax#min_keyword_length = 2
 
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
@@ -88,7 +91,7 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
-nnoremap <Space> za
+nnoremap <Space> zA
 
 " :%s/<selected text>/
 vmap <Leader>s "sy:%s/<C-R>"/

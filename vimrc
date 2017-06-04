@@ -6,13 +6,19 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'emgram769/vim-multiuser'
 Plug 'Konfekt/FastFold'
 Plug 'ludovicchabant/vim-gutentags'
+" Plug 'maralla/completor.vim'
 Plug 'mptre/vim-printf'
 Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/syntastic'
-" Plug 'Shougo/neocomplete.vim'
+Plug 'Shougo/context_filetype.vim'
+Plug 'Shougo/neco-syntax'
+Plug 'Shougo/neocomplete.vim'
+Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'sjl/gundo.vim'
 Plug 'tikhomirov/vim-glsl'
+Plug 'tommcdo/vim-lion'
+Plug 'tpope/tpope-vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -20,7 +26,6 @@ Plug 'travitch/hasksyn', { 'for': 'haskell' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-erlang/vim-erlang-runtime', { 'for': 'erlang' }
-Plug 'maralla/completor.vim'
 
 call plug#end()
 
@@ -37,8 +42,9 @@ let g:airline_left_sep = ''
 let g:airline_right_alt_sep = '|'
 let g:airline_right_sep = ''
 let g:airline_theme = 'solarized'
+let g:airline_section_z = '%3p%% %4l/%L:%3v'
 
-let g:completor_clang_binary = '/usr/bin/clang'
+" let g:completor_clang_binary = '/usr/bin/clang'
 
 " Proper HTML autoindentation
 let g:html_indent_inctags = "head,html,body,p,table,tbody,div,script,section"
@@ -60,15 +66,19 @@ if executable('ag')
 	let g:ctrlp_use_caching = 0
 endif
 
-" let g:acp_enableAtStartup = 0
-" let g:neocomplete#enable_at_startup = 1
-" let g:neocomplete#enable_smart_case = 1
-" let g:neocomplete#sources#syntax#min_keyword_length = 2
+let g:acp_enableAtStartup = 0
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 1
+let g:neocomplete#auto_completion_start_length = 1
+let g:neocomplete#auto_complete_delay = 1
+" let g:neocomplete#skip_auto_completion_time ""
 
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 let g:netrw_browse_split = 3
 let g:netrw_winsize = 25
+
+let g:lion_squeeze_spaces = 1
 
 " let g:gutentags_tagfile = '.git/tags'
 
@@ -131,8 +141,8 @@ nnoremap Q @q
 nnoremap <S-l> gt
 nnoremap <S-h> gT
 
-nnoremap go mpo<Esc>`p
-nnoremap gO mpO<Esc>`p
+nnoremap go o<Esc>
+nnoremap gO O<Esc>
 
 " Sets =========================================================================
 set autoindent
@@ -166,6 +176,7 @@ set noshowmode                  " No need to show mode thanks to airline
 set nostartofline               " Leave cursor position on <C-d>, G, dd, >> etc
 set noswapfile                  " No *.swp files
 set number                      " Show line numbers
+set numberwidth=3               " Number column width
 set omnifunc=syntaxcomplete#Complete
 set scrolloff=3                 " How many lines to keep visible when scrolling
 set shiftwidth=4                " An indent is 4 spaces

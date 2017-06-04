@@ -8,5 +8,5 @@ conky.config = {
 	net_avg_samples = 2,
 };
 
-conky.text = [[${downspeed wlp3s5} ${upspeed wlp3s5} ${cpu cpu0} ${cpu cpu1} ${cpu cpu2} ${cpu cpu3} ${mem} ${memperc}]]
+conky.text = [[${downspeed enp2s0} ${upspeed enp2s0} ${cpu cpu0} ${cpu cpu1} ${cpu cpu2} ${cpu cpu3} ${mem} ${memperc}]]
 

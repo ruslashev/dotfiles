@@ -5,6 +5,10 @@ dpi:
   x: 82
   y: 82
 
+padding:
+  x: 2
+  y: 2
+
 tabspaces: 4
 
 draw_bold_text_with_bright_colors: false
@@ -18,14 +22,19 @@ font:
     family: MonacoB2
   size: 9.0
   offset:
-    x: 1
-    y: -10.
+    x: 0
+    y: -1
+  glyph_offset:
+    x: 0
+    y: 0
   # OS X only: use thin stroke font rendering. Thin strokes are suitable
   # for retina displays, but for non-retina you probably want this set to
   # false.
   use_thin_strokes: true
 
 render_timer: false
+
+custom_cursor_colors: true
 
 # Colors (Solarized Dark)
 colors:
@@ -50,10 +59,12 @@ colors:
     magenta: '0x6c71c4'
     cyan:    '0x93a1a1'
     white:   '0xfdf6e3'
+  cursor:
+    text: '0x002b36'
+    cursor: '0x839496'
 
 visual_bell:
-  animation: EaseOut
-  duration: 1000
+  duration: 0
 
 # Key bindings
 #

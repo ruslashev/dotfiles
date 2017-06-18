@@ -101,7 +101,7 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
-nnoremap <Space> zA
+nnoremap <Space> za
 
 " :%s/<selected text>/
 vmap <Leader>s "sy:%s/<C-R>"/
@@ -122,7 +122,6 @@ nmap <Leader>l :exe "tabn " . g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 " Open C++ header in vsplit in every tab
 nmap <Leader>h :tabdo if filereadable(expand("%:r") . ".hpp") \| vs `=expand("%:r") . ".hpp"` \| endif<CR>:tabdo if filereadable(expand("%:r") . ".hh") \| vs `=expand("%:r") . ".hh"` \| endif<CR>:tabdo if filereadable(expand("%:r") . ".h") \| vs `=expand("%:r") . ".h"` \| endif<CR>:silent tabfirst<CR>
-nmap <Leader>H :tabdo if filereadable(expand("%:r") . ".hpp") \| sp `=expand("%:r") . ".hpp"` \| endif<CR>:tabdo if filereadable(expand("%:r") . ".hh") \| sp `=expand("%:r") . ".hh"` \| endif<CR>:tabdo if filereadable(expand("%:r") . ".h") \| sp `=expand("%:r") . ".h"` \| endif<CR>:silent tabfirst<CR>
 nmap <Leader>w :w<CR>
 
 nmap <Leader>o :CtrlPBuffer<CR>
@@ -163,6 +162,7 @@ set foldnestmax=12              " max 12 folds
 set formatoptions+=tqc          " default options for auto wrapping at textwidth
 set formatoptions-=ro           " don't insert comments on new lines
 set formatoptions+=nj           " dunno lol
+set gdefault                    " g flag by default in substitutions
 set history=1000                " :command history
 set ignorecase                  " Ignore case when searching
 set incsearch                   " Incremental search: search-as-type
@@ -179,6 +179,7 @@ set number                      " Show line numbers
 set numberwidth=3               " Number column width
 set omnifunc=syntaxcomplete#Complete
 set scrolloff=3                 " How many lines to keep visible when scrolling
+set synmaxcol=200               " stop syntax highlighting past this column
 set shiftwidth=4                " An indent is 4 spaces
 set showcmd                     " Show command being typed
 set showmatch                   " Show matching bracket
@@ -197,20 +198,20 @@ set wildmode=longest:full,full
 set smartcase                  " Ignore case
 
 " Autocmds =====================================================================
-augroup lso
+augroup language_specific_overrides
 	au!
-	au Filetype ruby setlocal et sw=2
+	au Filetype ruby    setlocal et sw=2
 	au Filetype haskell setlocal et sw=4
-	au Filetype erlang setlocal et sw=4
-	au FileType cpp set commentstring=\/\/\ %s
-	au FileType cpp setlocal et ts=2 sw=2
-	au Filetype scheme setlocal expandtab sw=4 lispwords-=define
-	au FileType help wincmd K
+	au Filetype erlang  setlocal et sw=4
+	au FileType erlang  let b:printf_pattern = 'io:format("%p~n", [%s]),'
+	au FileType cpp     set commentstring=\/\/\ %s
+	au FileType cpp     setlocal et ts=2 sw=2
+	au Filetype scheme  setlocal expandtab sw=4 lispwords-=define
+	au FileType help    wincmd K
+	au FileType *       setlocal formatoptions-=o
 augroup END
 
-autocmd FileType * setlocal formatoptions-=o
-
-augroup linenumbers
+augroup line_numbers
 	au!
 	au InsertEnter * setlocal nornu
 	au InsertLeave * setlocal rnu
@@ -222,7 +223,10 @@ augroup linenumbers
 	au WinLeave *    setlocal nornu
 augroup END
 
-autocmd FileType erlang let b:printf_pattern = 'io:format("%p~n", [%s]),'
+augroup auto_resize_splits
+	au TabEnter *   wincmd =
+	au VimResized * wincmd =
+augroup END
 
 " Cosmetic =====================================================================
 if (&t_Co > 8 || has("gui_running")) && !exists("syntax_on")

@@ -20,12 +20,14 @@ Plug 'tikhomirov/vim-glsl'
 Plug 'tommcdo/vim-lion'
 Plug 'tpope/tpope-vim-abolish'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'travitch/hasksyn', { 'for': 'haskell' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-erlang/vim-erlang-runtime', { 'for': 'erlang' }
+Plug 'wellle/targets.vim'
 
 call plug#end()
 
@@ -61,8 +63,8 @@ let g:syntastic_style_warning_symbol = '⚠~'
 let g:syntastic_warning_symbol = '⚠☛'
 
 " Use ag in CtrlP for listing files
-if executable('ag')
-	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+if executable('rg')
+	let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 	let g:ctrlp_use_caching = 0
 endif
 

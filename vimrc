@@ -118,14 +118,15 @@ nmap <Leader>b :call BigSearch()<CR>
 nmap <Leader>m :!make<CR>
 nmap <Leader>x :w<CR>:!chmod 755 %<CR>:e<CR>
 nmap <Leader>u :GundoToggle<CR>
-" Last used tab
-let g:lasttab = 1
-nmap <Leader>l :exe "tabn " . g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
 " Open C++ header in vsplit in every tab
 nmap <Leader>h :tabdo if filereadable(expand("%:r") . ".hpp") \| vs `=expand("%:r") . ".hpp"` \| endif<CR>:tabdo if filereadable(expand("%:r") . ".hh") \| vs `=expand("%:r") . ".hh"` \| endif<CR>:tabdo if filereadable(expand("%:r") . ".h") \| vs `=expand("%:r") . ".h"` \| endif<CR>:silent tabfirst<CR>
 nmap <Leader>w :w<CR>
 
+" " Last used tab
+" let g:lasttab = 1
+" nmap <Leader>l :exe "tabn " . g:lasttab<CR>
+" au TabLeave * let g:lasttab = tabpagenr()
+nmap <Leader>l :CtrlPLine
 nmap <Leader>o :CtrlPBuffer<CR>
 nmap <Leader>t :CtrlPTag<CR>
 
@@ -217,16 +218,16 @@ augroup line_numbers
 	au!
 	au InsertEnter * setlocal nornu
 	au InsertLeave * setlocal rnu
-	au BufNewFile *  setlocal rnu
+	au BufNewFile  * setlocal rnu
 	au BufReadPost * setlocal rnu
-	au FocusLost *   setlocal nornu
+	au FocusLost   * setlocal nornu
 	au FocusGained * setlocal rnu
-	au WinEnter *    setlocal rnu
-	au WinLeave *    setlocal nornu
+	au WinEnter    * setlocal rnu
+	au WinLeave    * setlocal nornu
 augroup END
 
 augroup auto_resize_splits
-	au TabEnter *   wincmd =
+	au TabEnter   * wincmd =
 	au VimResized * wincmd =
 augroup END
 

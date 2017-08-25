@@ -6,8 +6,10 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'emgram769/vim-multiuser'
 Plug 'Konfekt/FastFold'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'majutsushi/tagbar'
 " Plug 'maralla/completor.vim'
 Plug 'mptre/vim-printf'
+Plug 'petRUShka/vim-opencl'
 Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/syntastic'
 Plug 'Shougo/context_filetype.vim'
@@ -56,6 +58,7 @@ let g:html_indent_style1 = "inc"
 
 let g:syntastic_check_on_open = 1
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
+let g:syntastic_cpp_check_header = 1
 let g:syntastic_error_symbol = '✘☛'
 let g:syntastic_stl_format = '%E{✗ %fe Σ:%e}%B{ | }%W{⚠ %fw Σ:%w}'
 let g:syntastic_style_error_symbol = '✗~'

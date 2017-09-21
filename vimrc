@@ -146,8 +146,8 @@ nnoremap Q @q
 nnoremap <S-l> gt
 nnoremap <S-h> gT
 
-nnoremap go o<Esc>
-nnoremap gO O<Esc>
+nnoremap go o<Esc>k
+nnoremap gO O<Esc>j
 
 " Sets =========================================================================
 set autoindent

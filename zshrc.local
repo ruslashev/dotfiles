@@ -34,13 +34,15 @@ alias vim='vim -p'
 
 alias gst='git status'
 alias gada='git add -A'
+alias gadu='git add -u'
 alias gco='git checkout'
 alias gd='git diff --color=auto'
 alias gdh='git diff --color=auto HEAD'
+alias gds='git diff --color=auto --staged'
 alias gcom='git commit'
 alias gcom!='git commit --amend'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all"
-alias gp='git push -u origin master'
+alias gp='git push origin master'
 
 set -o vi
 

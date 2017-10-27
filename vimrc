@@ -126,10 +126,9 @@ nmap <Leader>h :tabdo if filereadable(expand("%:r") . ".hpp") \| vs `=expand("%:
 nmap <Leader>w :w<CR>
 
 " " Last used tab
-" let g:lasttab = 1
-" nmap <Leader>l :exe "tabn " . g:lasttab<CR>
-" au TabLeave * let g:lasttab = tabpagenr()
-nmap <Leader>l :CtrlPLine
+let g:lasttab = 1
+nmap <Leader>l :exe "tabn " . g:lasttab<CR>
+au TabLeave * let g:lasttab = tabpagenr()
 nmap <Leader>o :CtrlPBuffer<CR>
 nmap <Leader>t :CtrlPTag<CR>
 
@@ -151,12 +150,14 @@ nnoremap gO O<Esc>j
 
 " Sets =========================================================================
 set autoindent
+set autoread
 set autowrite                   " Auto write on :make, :shell and others
 set backspace=2                 " Allow backspacing everywhere
 set cindent                     " C-style autoindenting
 set cinoptions=g0               " Align public:, private: etc in C++ to column 1
 set cinoptions+=ls              " switch case labels indentation
 set cinoptions+=N-s             " don't indent in namespaces
+set colorcolumn=80
 set completeopt-=preview        " Don't show autocompletition window on top
 set cursorline                  " Highlight line with cursor
 set encoding=utf-8              " Default encoding

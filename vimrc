@@ -148,6 +148,8 @@ nnoremap <S-h> gT
 nnoremap go o<Esc>k
 nnoremap gO O<Esc>j
 
+nmap <C-q> :q<CR>
+
 " Sets =========================================================================
 set autoindent
 set autoread
@@ -161,6 +163,7 @@ set colorcolumn=80
 set completeopt-=preview        " Don't show autocompletition window on top
 set cursorline                  " Highlight line with cursor
 set encoding=utf-8              " Default encoding
+set expandtab                   " use spaces instead of tabs everywhere
 set fileformats="unix,dos,mac"  " Line ending priority
 set fillchars=vert:│,fold:─,diff:─ " Pretty window separators
 set foldlevelstart=9            " close folds after level 9 at start

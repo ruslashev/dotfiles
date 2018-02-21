@@ -7,12 +7,15 @@ Plug 'emgram769/vim-multiuser'
 Plug 'Konfekt/FastFold'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
-Plug 'maralla/completor.vim'
 Plug 'mptre/vim-printf'
 Plug 'petRUShka/vim-opencl'
 Plug 'Raimondi/delimitMate'
 Plug 'Shougo/context_filetype.vim'
 Plug 'Shougo/neco-syntax'
+Plug 'Shougo/neoinclude.vim'
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'sjl/gundo.vim'
 Plug 'tikhomirov/vim-glsl'
@@ -47,7 +50,7 @@ let g:airline_right_sep = ''
 let g:airline_theme = 'solarized'
 let g:airline_section_z = '%3p%% %4l/%L:%3v'
 
-let g:completor_clang_binary = '/usr/bin/clang'
+let g:deoplete#enable_at_startup = 1
 
 " Proper HTML autoindentation
 let g:html_indent_inctags = "head,html,body,p,table,tbody,div,script,section"
@@ -55,19 +58,12 @@ let g:html_indent_inctags += ",h1,h2,h3,li"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_cpp_compiler_options = ' -std=c++11'
-" let g:syntastic_cpp_check_header = 1
-" let g:syntastic_error_symbol = 'x>'
-" let g:syntastic_stl_format = '%E{✗ %fe Σ:%e}%B{ | }%W{⚠ %fw Σ:%w}'
-" let g:syntastic_style_error_symbol = 'x~'
-" let g:syntastic_style_warning_symbol = '!~'
-" let g:syntastic_warning_symbol = '!>'
 let g:ale_sign_error = 'x>'
 let g:ale_sign_warning = '!>'
 let g:ale_linters = {
-      \ 'cpp': [ 'clang', 'clangcheck', 'clang-format', 'cppcheck', 'cpplint', 'gcc' ]
+      \ 'cpp': [ 'clang', 'clangcheck', 'clang-format', 'cppcheck', 'cpplint', 'g++' ]
       \ }
+let g:ale_cpp_clangcheck_options = '-std=c++14'
 
 " Use ag in CtrlP for listing files
 if executable('rg')

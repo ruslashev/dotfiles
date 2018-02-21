@@ -11,7 +11,6 @@ Plug 'maralla/completor.vim'
 Plug 'mptre/vim-printf'
 Plug 'petRUShka/vim-opencl'
 Plug 'Raimondi/delimitMate'
-Plug 'scrooloose/syntastic'
 Plug 'Shougo/context_filetype.vim'
 Plug 'Shougo/neco-syntax'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
@@ -27,6 +26,7 @@ Plug 'travitch/hasksyn', { 'for': 'haskell' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-erlang/vim-erlang-runtime', { 'for': 'erlang' }
+Plug 'w0rp/ale'
 Plug 'wellle/targets.vim'
 
 call plug#end()
@@ -39,6 +39,7 @@ let g:mapleader = ","
 let g:airline#extensions#tabline#close_symbol = 'x'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#checks = [ 'trailing' ]
+let g:airline#extensions#ale#enabled = 1
 let g:airline_left_alt_sep = '|'
 let g:airline_left_sep = ''
 let g:airline_right_alt_sep = '|'
@@ -54,14 +55,19 @@ let g:html_indent_inctags += ",h1,h2,h3,li"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
-let g:syntastic_check_on_open = 1
-let g:syntastic_cpp_compiler_options = ' -std=c++11'
-let g:syntastic_cpp_check_header = 1
-let g:syntastic_error_symbol = 'x>'
-let g:syntastic_stl_format = '%E{✗ %fe Σ:%e}%B{ | }%W{⚠ %fw Σ:%w}'
-let g:syntastic_style_error_symbol = 'x~'
-let g:syntastic_style_warning_symbol = '!~'
-let g:syntastic_warning_symbol = '!>'
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_cpp_compiler_options = ' -std=c++11'
+" let g:syntastic_cpp_check_header = 1
+" let g:syntastic_error_symbol = 'x>'
+" let g:syntastic_stl_format = '%E{✗ %fe Σ:%e}%B{ | }%W{⚠ %fw Σ:%w}'
+" let g:syntastic_style_error_symbol = 'x~'
+" let g:syntastic_style_warning_symbol = '!~'
+" let g:syntastic_warning_symbol = '!>'
+let g:ale_sign_error = 'x>'
+let g:ale_sign_warning = '!>'
+let g:ale_linters = {
+      \ 'cpp': [ 'clang', 'clangcheck', 'clang-format', 'cppcheck', 'cpplint', 'gcc' ]
+      \ }
 
 " Use ag in CtrlP for listing files
 if executable('rg')
@@ -181,7 +187,7 @@ set numberwidth=3               " Number column width
 set omnifunc=syntaxcomplete#Complete
 set scrolloff=3                 " How many lines to keep visible when scrolling
 set synmaxcol=200               " stop syntax highlighting past this column
-set shiftwidth=4                " An indent is 4 spaces
+set shiftwidth=2                " An indent is 2 spaces
 set showcmd                     " Show command being typed
 set showmatch                   " Show matching bracket
 set splitright                  " Split new (vertical) windows to the right

@@ -7,15 +7,13 @@ Plug 'emgram769/vim-multiuser'
 Plug 'Konfekt/FastFold'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
-" Plug 'maralla/completor.vim'
+Plug 'maralla/completor.vim'
 Plug 'mptre/vim-printf'
 Plug 'petRUShka/vim-opencl'
 Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/syntastic'
 Plug 'Shougo/context_filetype.vim'
 Plug 'Shougo/neco-syntax'
-Plug 'Shougo/neocomplete.vim'
-Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'sjl/gundo.vim'
 Plug 'tikhomirov/vim-glsl'
@@ -38,7 +36,7 @@ filetype plugin indent on
 " lets =========================================================================
 let g:mapleader = ","
 
-let g:airline#extensions#tabline#close_symbol = '✘'
+let g:airline#extensions#tabline#close_symbol = 'x'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#checks = [ 'trailing' ]
 let g:airline_left_alt_sep = '|'
@@ -48,7 +46,7 @@ let g:airline_right_sep = ''
 let g:airline_theme = 'solarized'
 let g:airline_section_z = '%3p%% %4l/%L:%3v'
 
-" let g:completor_clang_binary = '/usr/bin/clang'
+let g:completor_clang_binary = '/usr/bin/clang'
 
 " Proper HTML autoindentation
 let g:html_indent_inctags = "head,html,body,p,table,tbody,div,script,section"
@@ -59,11 +57,11 @@ let g:html_indent_style1 = "inc"
 let g:syntastic_check_on_open = 1
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 let g:syntastic_cpp_check_header = 1
-let g:syntastic_error_symbol = '✘☛'
+let g:syntastic_error_symbol = 'x>'
 let g:syntastic_stl_format = '%E{✗ %fe Σ:%e}%B{ | }%W{⚠ %fw Σ:%w}'
-let g:syntastic_style_error_symbol = '✗~'
-let g:syntastic_style_warning_symbol = '⚠~'
-let g:syntastic_warning_symbol = '⚠☛'
+let g:syntastic_style_error_symbol = 'x~'
+let g:syntastic_style_warning_symbol = '!~'
+let g:syntastic_warning_symbol = '!>'
 
 " Use ag in CtrlP for listing files
 if executable('rg')
@@ -72,11 +70,6 @@ if executable('rg')
 endif
 
 let g:acp_enableAtStartup = 0
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 1
-let g:neocomplete#auto_completion_start_length = 1
-let g:neocomplete#auto_complete_delay = 1
-" let g:neocomplete#skip_auto_completion_time ""
 
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
@@ -97,8 +90,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 map <C-n> :Vexplore<CR>
-
-inoremap <expr><C-l> neocomplete#complete_common_string()
 
 " Swap j/k and gj/gk
 nnoremap j gj

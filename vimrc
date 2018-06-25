@@ -231,6 +231,10 @@ augroup auto_resize_splits
 	au VimResized * wincmd =
 augroup END
 
+augroup nasm_fileext
+	au BufRead,BufNewFile *.asm set filetype=nasm
+augroup END
+
 " Cosmetic =====================================================================
 if (&t_Co > 8 || has("gui_running")) && !exists("syntax_on")
 	syntax on

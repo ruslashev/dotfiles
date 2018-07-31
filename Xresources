@@ -1,4 +1,3 @@
-Xft.dpi: 82
 Xft.antialias: true
 Xft.rgba: rgb
 Xft.hinting: true
@@ -26,9 +25,10 @@ urxvt*color12:                 #839496
 urxvt*color13:                 #6c71c4
 urxvt*color14:                 #93a1a1
 urxvt*color15:                 #fdf6e3
-/* urxvt*font: xft:ProggyTinyTTSZ:style=Regular:antialias=false:hinting:false:pixelsize=9 */
-urxvt*font: xft:Meslo\ LG\ M:size=9
-urxvt*boldFont: xft:Meslo\ LG\ M:size=9
+/* urxvt*font: xft:Meslo\ LG\ M\ DZ:size=9 */
+/* urxvt*boldFont: xft:Meslo\ LG\ M\ DZ:size=9 */
+urxvt*font: xft:Monaco:style=Regular:size=9
+urxvt*boldFont: xft:Monaco:style=Regular:size=9
 urxvt*letterSpace: -2
 urxvt*geometry: 80x25
 urxvt*saveLines: 12000
@@ -39,4 +39,3 @@ urxvt*scrollTtyOutput: false
 urxvt*scrollWithBuffer: true
 urxvt*scrollTtyKeypress: true
 urxvt*jumpscroll: true
-

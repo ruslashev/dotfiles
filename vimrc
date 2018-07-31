@@ -2,22 +2,25 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
+Plug 'autozimu/LanguageClient-neovim', {
+            \ 'branch': 'next',
+            \ 'do': 'bash install.sh',
+            \ }
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'emgram769/vim-multiuser'
 Plug 'Konfekt/FastFold'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 Plug 'mptre/vim-printf'
 Plug 'petRUShka/vim-opencl'
 Plug 'Raimondi/delimitMate'
-Plug 'Shougo/context_filetype.vim'
-Plug 'Shougo/neco-syntax'
-Plug 'Shougo/neoinclude.vim'
-Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'Shougo/context_filetype.vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/neco-syntax'
+Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'sjl/gundo.vim'
+Plug 'simnalamburt/vim-mundo'
 Plug 'tikhomirov/vim-glsl'
 Plug 'tommcdo/vim-lion'
 Plug 'tpope/tpope-vim-abolish'
@@ -61,13 +64,18 @@ let g:html_indent_style1 = "inc"
 let g:ale_sign_error = 'x>'
 let g:ale_sign_warning = '!>'
 let g:ale_linters = {
+      \ 'c': [ 'clang', 'gcc' ],
       \ 'cpp': [ 'clang', 'clangcheck', 'clang-format', 'cppcheck', 'cpplint', 'g++' ]
       \ }
 let g:ale_cpp_clangcheck_options = '-std=c++14'
+let g:ale_c_clang_options = '-I/home/rbakbashev/work/sdk_tzsl/src/logger'
+let g:ale_c_gcc_options = '-I/home/rbakbashev/work/sdk_tzsl/src/logger'
+let g:ale_completition_enabled = 1
 
 " Use ag in CtrlP for listing files
-if executable('rg')
-	let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+if executable('ag')
+	" let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 	let g:ctrlp_use_caching = 0
 endif
 
@@ -98,6 +106,10 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
+vnoremap j gj
+vnoremap k gk
+vnoremap gj j
+vnoremap gk k
 
 nnoremap <Space> za
 
@@ -113,7 +125,7 @@ endfunction
 nmap <Leader>b :call BigSearch()<CR>
 nmap <Leader>m :!make<CR>
 nmap <Leader>x :w<CR>:!chmod 755 %<CR>:e<CR>
-nmap <Leader>u :GundoToggle<CR>
+nmap <Leader>u :MundoToggle<CR>
 " Open C++ header in vsplit in every tab
 nmap <Leader>h :tabdo if filereadable(expand("%:r") . ".hpp") \| vs `=expand("%:r") . ".hpp"` \| endif<CR>:tabdo if filereadable(expand("%:r") . ".hh") \| vs `=expand("%:r") . ".hh"` \| endif<CR>:tabdo if filereadable(expand("%:r") . ".h") \| vs `=expand("%:r") . ".h"` \| endif<CR>:silent tabfirst<CR>
 nmap <Leader>w :w<CR>
@@ -143,6 +155,8 @@ nnoremap gO O<Esc>j
 
 nmap <C-q> :q<CR>
 
+nnoremap zT :%foldc<CR>
+
 " Sets =========================================================================
 set autoindent
 set autoread
@@ -152,7 +166,7 @@ set cindent                     " C-style autoindenting
 set cinoptions=g0               " Align public:, private: etc in C++ to column 1
 set cinoptions+=ls              " switch case labels indentation
 set cinoptions+=N-s             " don't indent in namespaces
-set colorcolumn=80
+set colorcolumn=100
 set completeopt-=preview        " Don't show autocompletition window on top
 set cursorline                  " Highlight line with cursor
 set encoding=utf-8              " Default encoding
@@ -167,13 +181,14 @@ set formatoptions-=ro           " don't insert comments on new lines
 set formatoptions+=nj           " dunno lol
 set gdefault                    " g flag by default in substitutions
 set history=1000                " :command history
+set hidden
 set ignorecase                  " Ignore case when searching
 set incsearch                   " Incremental search: search-as-type
 set laststatus=2                " Always show status bar
 set lazyredraw                  " Don't redraw while executing macros
 set list listchars=tab:\|─,trail:·,nbsp:↔ " Display nonprintable characters
 set matchtime=3                 " Time to show matching bracket
-set mouse=a                     " Enable mouse
+set mouse=""                    " Disable mouse
 set nobackup                    " Don't backup before overwrite
 set noshowmode                  " No need to show mode thanks to airline
 set nostartofline               " Leave cursor position on <C-d>, G, dd, >> etc
@@ -183,13 +198,13 @@ set numberwidth=3               " Number column width
 set omnifunc=syntaxcomplete#Complete
 set scrolloff=3                 " How many lines to keep visible when scrolling
 set synmaxcol=200               " stop syntax highlighting past this column
-set shiftwidth=2                " An indent is 2 spaces
+set shiftwidth=4                " An indent is 4 spaces
 set showcmd                     " Show command being typed
 set showmatch                   " Show matching bracket
 set splitright                  " Split new (vertical) windows to the right
 set tabpagemax=50               " 50 tabs (:tabe, vim -p, ..) max
 set tabstop=4                   " A tab character is displayed as 4 spaces max
-set textwidth=80                " Auto break text exceeding 80 chars
+set textwidth=100               " Auto break text exceeding 100 chars
 set undodir=~/.vim/undo
 set undofile
 set visualbell                  " Don't flash screen
@@ -207,8 +222,9 @@ augroup language_specific_overrides
 	au Filetype haskell setlocal et sw=4
 	au Filetype erlang  setlocal et sw=4
 	au FileType erlang  let b:printf_pattern = 'io:format("%p~n", [%s]),'
+	au FileType c       set commentstring=\/*\ %s\ *\/
 	au FileType cpp     set commentstring=\/\/\ %s
-	au FileType cpp     setlocal et ts=2 sw=2
+	au FileType cpp     setlocal et ts=4 sw=4
 	au Filetype scheme  setlocal expandtab sw=4 lispwords-=define
 	au FileType help    wincmd K
 	au FileType *       setlocal formatoptions-=o
@@ -231,9 +247,9 @@ augroup auto_resize_splits
 	au VimResized * wincmd =
 augroup END
 
-augroup nasm_fileext
-	au BufRead,BufNewFile *.asm set filetype=nasm
-augroup END
+au BufWritePost * GitGutter
+
+au BufRead,BufNewFile *.s set filetype=nasm
 
 " Cosmetic =====================================================================
 if (&t_Co > 8 || has("gui_running")) && !exists("syntax_on")
@@ -241,10 +257,9 @@ if (&t_Co > 8 || has("gui_running")) && !exists("syntax_on")
 endif
 set background=dark
 colorscheme solarized
-call matchadd('ColorColumn', '\%81v', 100)
+call matchadd('ColorColumn', '\%101v', 100)
 
 " Commands =====================================================================
 command! W w !sudo tee % > /dev/null
 " Disable :X
 set key=
-

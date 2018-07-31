@@ -1,11 +1,18 @@
 # .zshrc.local
 # This file is used together with grml-zsh's .zshrc
 
+# export TERM="rxvt-unicode-256color"
+
+# export ADB_TRACE=all
+unalias ag
+
+export PATH=~/bin:$PATH
+
 export HISTFILE=~/.zsh-history
 export HISTSIZE=100000
 export SAVEHIST=$HISTSIZE
 
-export MAKEFLAGS="-j4"
+export MAKEFLAGS="-j8"
 export EDITOR="vim"
 
 export MANWIDTH=${MANWIDTH:-80}
@@ -16,7 +23,6 @@ setopt always_to_end        # When complete from middle, move cursor
 setopt no_match             # Show error if pattern has no matches
 setopt no_beep              # Disable beeps
 setopt list_types           # Show types in completion
-setopt hist_ignore_all_dups # Ignore duplicates in command history
 setopt hist_ignore_space    # Don't add commands preceded by space to history
 setopt hist_reduce_blanks
 setopt append_history share_history inc_append_history
@@ -115,4 +121,3 @@ function precmd {
 function mdd() {
 	mkdir -p $1 && cd $1
 }
-

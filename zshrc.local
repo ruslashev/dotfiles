@@ -6,8 +6,6 @@
 # export ADB_TRACE=all
 unalias ag
 
-export PATH=~/bin:$PATH
-
 export HISTFILE=~/.zsh-history
 export HISTSIZE=100000
 export SAVEHIST=$HISTSIZE
@@ -36,7 +34,13 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
 alias m='make'
+
 alias vim='vim -p'
+
+alias fn='find . -name'
+
+alias ash='adb shell'
+alias adev='adb devices'
 
 alias gst='git status'
 alias gada='git add -A'

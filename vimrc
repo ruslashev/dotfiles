@@ -11,12 +11,13 @@ Plug 'Konfekt/FastFold'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 Plug 'mptre/vim-printf'
+Plug 'neovim/python-client', { 'do': 'pip3 install neovim --user' }
 Plug 'petRUShka/vim-opencl'
 Plug 'Raimondi/delimitMate'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'Shougo/context_filetype.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete.nvim'
 Plug 'Shougo/neco-syntax'
 Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
@@ -34,6 +35,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-erlang/vim-erlang-runtime', { 'for': 'erlang' }
 Plug 'w0rp/ale'
 Plug 'wellle/targets.vim'
+Plug 'zchee/deoplete-clang'
 
 call plug#end()
 
@@ -54,6 +56,8 @@ let g:airline_theme = 'solarized'
 let g:airline_section_z = '%3p%% %4l/%L:%3v'
 
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang.so'
+let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
 
 " Proper HTML autoindentation
 let g:html_indent_inctags = "head,html,body,p,table,tbody,div,script,section"
@@ -70,6 +74,7 @@ let g:ale_linters = {
 let g:ale_cpp_clangcheck_options = '-std=c++14'
 let g:ale_c_clang_options = '-I/home/rbakbashev/work/sdk_tzsl/src/logger'
 let g:ale_c_gcc_options = '-I/home/rbakbashev/work/sdk_tzsl/src/logger'
+let g:ale_nasm_nasm_options = '-f elf'
 let g:ale_completition_enabled = 1
 
 " Use ag in CtrlP for listing files
@@ -94,10 +99,18 @@ let g:lion_squeeze_spaces = 1
 let $FROMVIM=1
 
 " Key remaps ===================================================================
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+
+" Map tab to escape and Shift-Tab to literal Tab
+nnoremap <Tab> <Esc>
+vnoremap <Tab> <Esc>gV
+onoremap <Tab> <Esc>
+inoremap <Tab> <Esc>`^
+inoremap <S-Tab> <Tab>
+
+" nnoremap <C-h> <C-w>h
+" nnoremap <C-j> <C-w>j
+" nnoremap <C-k> <C-w>k
+" nnoremap <C-l> <C-w>l
 
 map <C-n> :Vexplore<CR>
 
@@ -129,29 +142,20 @@ nmap <Leader>u :MundoToggle<CR>
 " Open C++ header in vsplit in every tab
 nmap <Leader>h :tabdo if filereadable(expand("%:r") . ".hpp") \| vs `=expand("%:r") . ".hpp"` \| endif<CR>:tabdo if filereadable(expand("%:r") . ".hh") \| vs `=expand("%:r") . ".hh"` \| endif<CR>:tabdo if filereadable(expand("%:r") . ".h") \| vs `=expand("%:r") . ".h"` \| endif<CR>:silent tabfirst<CR>
 nmap <Leader>w :w<CR>
-
-" " Last used tab
+" Last used tab
 let g:lasttab = 1
 nmap <Leader>l :exe "tabn " . g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 nmap <Leader>o :CtrlPBuffer<CR>
 nmap <Leader>t :CtrlPTag<CR>
-
 nmap <Leader>p :Printf<CR>
-
-" Map tab to escape and Shift-Tab to literal Tab
-nnoremap <Tab> <Esc>
-vnoremap <Tab> <Esc>gV
-onoremap <Tab> <Esc>
-inoremap <Tab> <Esc>`^
-inoremap <S-Tab> <Tab>
 
 nnoremap Q @q
 nnoremap <S-l> gt
 nnoremap <S-h> gT
 
-nnoremap go o<Esc>k
-nnoremap gO O<Esc>j
+nnoremap go moo<Esc>`o
+nnoremap gO moO<Esc>`o
 
 nmap <C-q> :q<CR>
 
@@ -197,11 +201,13 @@ set number                      " Show line numbers
 set numberwidth=3               " Number column width
 set omnifunc=syntaxcomplete#Complete
 set scrolloff=3                 " How many lines to keep visible when scrolling
-set synmaxcol=200               " stop syntax highlighting past this column
 set shiftwidth=4                " An indent is 4 spaces
 set showcmd                     " Show command being typed
 set showmatch                   " Show matching bracket
+set sidescrolloff=5             " How many lines to keep visible when scrolling
+set smartcase                  " Ignore case
 set splitright                  " Split new (vertical) windows to the right
+set synmaxcol=200               " stop syntax highlighting past this column
 set tabpagemax=50               " 50 tabs (:tabe, vim -p, ..) max
 set tabstop=4                   " A tab character is displayed as 4 spaces max
 set textwidth=100               " Auto break text exceeding 100 chars
@@ -213,7 +219,6 @@ set wildignore=*.bak,*.pyc,*.class,*.o,.git
 set wildignorecase
 set wildmenu
 set wildmode=longest:full,full
-set smartcase                  " Ignore case
 
 " Autocmds =====================================================================
 augroup language_specific_overrides
@@ -227,6 +232,7 @@ augroup language_specific_overrides
 	au FileType cpp     setlocal et ts=4 sw=4
 	au Filetype scheme  setlocal expandtab sw=4 lispwords-=define
 	au FileType help    wincmd K
+	au FileType nasm    set commentstring=;\ %s
 	au FileType *       setlocal formatoptions-=o
 augroup END
 

@@ -74,7 +74,7 @@ let g:ale_linters = {
 let g:ale_cpp_clangcheck_options = '-std=c++14'
 let g:ale_c_clang_options = '-I/home/rbakbashev/work/sdk_tzsl/src/logger'
 let g:ale_c_gcc_options = '-I/home/rbakbashev/work/sdk_tzsl/src/logger'
-let g:ale_nasm_nasm_options = '-f elf'
+let g:ale_nasm_nasm_options = '-f elf64'
 let g:ale_completition_enabled = 1
 
 " Use ag in CtrlP for listing files
@@ -106,11 +106,6 @@ vnoremap <Tab> <Esc>gV
 onoremap <Tab> <Esc>
 inoremap <Tab> <Esc>`^
 inoremap <S-Tab> <Tab>
-
-" nnoremap <C-h> <C-w>h
-" nnoremap <C-j> <C-w>j
-" nnoremap <C-k> <C-w>k
-" nnoremap <C-l> <C-w>l
 
 map <C-n> :Vexplore<CR>
 
@@ -149,6 +144,9 @@ au TabLeave * let g:lasttab = tabpagenr()
 nmap <Leader>o :CtrlPBuffer<CR>
 nmap <Leader>t :CtrlPTag<CR>
 nmap <Leader>p :Printf<CR>
+nnoremap <Leader>gu :GitGutterUndoHunk<CR>
+nnoremap <Leader>gp :GitGutterPreviewHunk<CR>
+nnoremap <Leader>gs :GitGutterStageHunk<CR>
 
 nnoremap Q @q
 nnoremap <S-l> gt
@@ -160,6 +158,9 @@ nnoremap gO moO<Esc>`o
 nmap <C-q> :q<CR>
 
 nnoremap zT :%foldc<CR>
+
+command Dos2Unix %s/
+//
 
 " Sets =========================================================================
 set autoindent

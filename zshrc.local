@@ -43,6 +43,7 @@ alias ash='adb shell'
 alias adev='adb devices'
 
 alias gst='git status'
+alias gad='git add'
 alias gada='git add -A'
 alias gadu='git add -u'
 alias gco='git checkout'

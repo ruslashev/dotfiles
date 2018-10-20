@@ -29,7 +29,7 @@ urxvt*color15:                 #fdf6e3
 /* urxvt*boldFont: xft:Meslo\ LG\ M\ DZ:size=9 */
 urxvt*font: xft:Monaco:style=Regular:size=9
 urxvt*boldFont: xft:Monaco:style=Regular:size=9
-urxvt*letterSpace: -2
+urxvt*letterSpace: -1
 urxvt*geometry: 80x25
 urxvt*saveLines: 12000
 urxvt*urlLauncher: firefox

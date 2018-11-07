@@ -12,6 +12,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 Plug 'mptre/vim-printf'
 Plug 'neovim/python-client', { 'do': 'pip3 install neovim --user' }
+Plug 'majutsushi/tagbar'
 Plug 'petRUShka/vim-opencl'
 Plug 'Raimondi/delimitMate'
 Plug 'roxma/nvim-yarp'
@@ -34,7 +35,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-erlang/vim-erlang-runtime', { 'for': 'erlang' }
 Plug 'w0rp/ale'
-Plug 'wellle/targets.vim'
 Plug 'zchee/deoplete-clang'
 
 call plug#end()
@@ -142,7 +142,7 @@ let g:lasttab = 1
 nmap <Leader>l :exe "tabn " . g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 nmap <Leader>o :CtrlPBuffer<CR>
-nmap <Leader>t :CtrlPTag<CR>
+nmap <Leader>t :TagbarToggle<CR>
 nmap <Leader>p :Printf<CR>
 nnoremap <Leader>gu :GitGutterUndoHunk<CR>
 nnoremap <Leader>gp :GitGutterPreviewHunk<CR>

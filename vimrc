@@ -6,13 +6,14 @@ Plug 'autozimu/LanguageClient-neovim', {
             \ 'branch': 'next',
             \ 'do': 'bash install.sh',
             \ }
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/bin/fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'Konfekt/FastFold'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 Plug 'mptre/vim-printf'
 Plug 'neovim/python-client', { 'do': 'pip3 install neovim --user' }
-Plug 'majutsushi/tagbar'
 Plug 'petRUShka/vim-opencl'
 Plug 'Raimondi/delimitMate'
 Plug 'roxma/nvim-yarp'
@@ -42,6 +43,8 @@ call plug#end()
 filetype plugin indent on
 
 " lets =========================================================================
+let g:python3_host_prog = '/usr/bin/python3.5'
+
 let g:mapleader = ","
 
 let g:airline#extensions#tabline#close_symbol = 'x'
@@ -55,6 +58,7 @@ let g:airline_right_sep = ''
 let g:airline_theme = 'solarized'
 let g:airline_section_z = '%3p%% %4l/%L:%3v'
 
+" yarp broke recently
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
@@ -77,13 +81,6 @@ let g:ale_c_gcc_options = '-I/home/rbakbashev/work/sdk_tzsl/src/logger'
 let g:ale_nasm_nasm_options = '-f elf64'
 let g:ale_completition_enabled = 1
 
-" Use ag in CtrlP for listing files
-if executable('ag')
-	" let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-	let g:ctrlp_use_caching = 0
-endif
-
 let g:acp_enableAtStartup = 0
 
 let g:netrw_liststyle = 3
@@ -92,6 +89,8 @@ let g:netrw_browse_split = 3
 let g:netrw_winsize = 25
 
 let g:lion_squeeze_spaces = 1
+
+let g:fzf_layout = { 'up': '~33%' }
 
 " let g:gutentags_tagfile = '.git/tags'
 
@@ -107,7 +106,9 @@ onoremap <Tab> <Esc>
 inoremap <Tab> <Esc>`^
 inoremap <S-Tab> <Tab>
 
-map <C-n> :Vexplore<CR>
+" map <C-n> :Vexplore<CR>
+
+nnoremap <C-p> :Files<CR>
 
 " Swap j/k and gj/gk
 nnoremap j gj
@@ -123,27 +124,37 @@ nnoremap <Space> za
 
 " :%s/<selected text>/
 vmap <Leader>s "sy:%s/<C-R>"/
+
 " Search for selected text in directory and open quickfix list
 vmap <Leader>v "sy:grep! <C-R>" **/*<CR>:cw<CR>
+
 function! BigSearch()
 	let search = input("What to search: ")
 	execute ":grep! " . search . " **/*"
 	cw
 endfunction
 nmap <Leader>b :call BigSearch()<CR>
+
 nmap <Leader>m :!make<CR>
-nmap <Leader>x :w<CR>:!chmod 755 %<CR>:e<CR>
+
+" nmap <Leader>x :w<CR>:!chmod 755 %<CR>:e<CR>
+
 nmap <Leader>u :MundoToggle<CR>
+
 " Open C++ header in vsplit in every tab
 nmap <Leader>h :tabdo if filereadable(expand("%:r") . ".hpp") \| vs `=expand("%:r") . ".hpp"` \| endif<CR>:tabdo if filereadable(expand("%:r") . ".hh") \| vs `=expand("%:r") . ".hh"` \| endif<CR>:tabdo if filereadable(expand("%:r") . ".h") \| vs `=expand("%:r") . ".h"` \| endif<CR>:silent tabfirst<CR>
+
 nmap <Leader>w :w<CR>
+
 " Last used tab
 let g:lasttab = 1
 nmap <Leader>l :exe "tabn " . g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
-nmap <Leader>o :CtrlPBuffer<CR>
+
 nmap <Leader>t :TagbarToggle<CR>
+
 nmap <Leader>p :Printf<CR>
+
 nnoremap <Leader>gu :GitGutterUndoHunk<CR>
 nnoremap <Leader>gp :GitGutterPreviewHunk<CR>
 nnoremap <Leader>gs :GitGutterStageHunk<CR>
@@ -159,8 +170,16 @@ nmap <C-q> :q<CR>
 
 nnoremap zT :%foldc<CR>
 
-command Dos2Unix %s/
-//
+vnoremap <C-b> :<ESC>
+              \:let _name=@%<CR>
+              \:let _begin=line("'<")<CR>
+              \:let _end=line("'>")<CR>
+              \:tabedit<CR>
+              \:execute("r !git blame "._name." -L"._begin.","._end)<CR>
+              \:setlocal buftype=nofile<CR>
+              \:setlocal bufhidden=hide<CR>
+              \:setlocal noswapfile<CR>
+              \ggdd<CR>
 
 " Sets =========================================================================
 set autoindent
@@ -268,5 +287,12 @@ call matchadd('ColorColumn', '\%101v', 100)
 
 " Commands =====================================================================
 command! W w !sudo tee % > /dev/null
+
 " Disable :X
 set key=
+
+" there must be C-m here, but I am copypasting sources everytime to update dotfiles
+command Dos2Unix %s/
+//
+
+command StripTrailingWhitespace %s/\s\+$//

@@ -76,8 +76,8 @@ let g:ale_linters = {
       \ 'cpp': [ 'clang', 'clangcheck', 'clang-format', 'cppcheck', 'cpplint', 'g++' ]
       \ }
 let g:ale_cpp_clangcheck_options = '-std=c++14'
-let g:ale_c_clang_options = '-I/home/rbakbashev/work/sdk_tzsl/src/logger'
-let g:ale_c_gcc_options = '-I/home/rbakbashev/work/sdk_tzsl/src/logger'
+let g:ale_c_clang_options = ''
+let g:ale_c_gcc_options = ''
 let g:ale_nasm_nasm_options = '-f elf64'
 let g:ale_completition_enabled = 1
 
@@ -292,7 +292,6 @@ command! W w !sudo tee % > /dev/null
 set key=
 
 " there must be C-m here, but I am copypasting sources everytime to update dotfiles
-command Dos2Unix %s/
-//
+command Dos2Unix %s///
 
 command StripTrailingWhitespace %s/\s\+$//

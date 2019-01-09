@@ -11,7 +11,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'Konfekt/FastFold'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
-Plug 'majutsushi/tagbar'
 Plug 'mptre/vim-printf'
 Plug 'neovim/python-client', { 'do': 'pip3 install neovim --user' }
 Plug 'petRUShka/vim-opencl'
@@ -291,7 +290,7 @@ command! W w !sudo tee % > /dev/null
 " Disable :X
 set key=
 
-" there must be C-m here, but I am copypasting sources everytime to update dotfiles
+" there must be C-m here, but I am copypasting sources sometimes to update dotfiles
 command Dos2Unix %s///
 
 command StripTrailingWhitespace %s/\s\+$//

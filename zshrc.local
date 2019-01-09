@@ -6,8 +6,12 @@
 # export ADB_TRACE=all
 unalias ag
 
+export PATH=$PATH:~/bin
+export PATH=$PATH:~/bin/bin
+export PATH=$PATH:~/bin/lib
+
 export HISTFILE=~/.zsh-history
-export HISTSIZE=100000
+export HISTSIZE=1000000
 export SAVEHIST=$HISTSIZE
 
 export MAKEFLAGS="-j8"
@@ -39,11 +43,20 @@ alias vim='vim -p'
 
 alias fn='find . -name'
 
-alias ash='adb shell'
+alias dirsum='echo -n "$(basename $(pwd)): " && find . -type f -exec cat {} + | md5sum'
+alias dirsumeach='for i in *; do echo -n "$i: "; find $i -type f -exec cat {} + | md5sum; done'
+
+alias ash='adb wait-for-device shell'
 alias adev='adb devices'
+alias akmsg='adb wait-for-device; echo connect; adb shell "while true; do cat /proc/kmsg | grep SW; done"'
+alias atest='adb shell /system/tee/tee_test'
+
+alias sdk='cd ~/work/sdk_tzsl'
+alias sk='cd ~/work/secure-kernel'
+
+alias pip3_update='pip list --outdated --format=freeze | grep -v '\''^\-e'\'' | cut -d = -f 1  | xargs -n1 pip install --user --upgrade'
 
 alias gst='git status'
-alias gad='git add'
 alias gada='git add -A'
 alias gadu='git add -u'
 alias gco='git checkout'
@@ -126,3 +139,5 @@ function precmd {
 function mdd() {
 	mkdir -p $1 && cd $1
 }
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

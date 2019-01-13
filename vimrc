@@ -291,6 +291,7 @@ command! W w !sudo tee % > /dev/null
 set key=
 
 " there must be C-m here, but I am copypasting sources sometimes to update dotfiles
-command Dos2Unix %s///
+command! Dos2Unix %s///
 
-command StripTrailingWhitespace %s/\s\+$//
+command! StripTrailingWhitespace %s/\s\+$//
+

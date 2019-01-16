@@ -48,8 +48,9 @@ done
 echo
 
 for i in $dotfiles; do
-	target="$(pwd)/$i"
+	target="$(pwd)/../$i"
 	link_name="$HOME/.$i"
+
 	if [[ ! -e "$link_name" ]]; then
 		ln -sf "$target" "$link_name"
 		print_result $? "$link_name -> $target"

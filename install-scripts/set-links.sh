@@ -2,28 +2,29 @@
 
 # Credit to https://github.com/nicksp/dotfiles/blob/master/setup.sh
 
-print_result() {
+print_result()
+{
 	[[ $1 -eq 0 ]] \
 		&& print_success "$2" \
 		|| print_error "$2"
 }
-print_success() {
+
+print_success()
+{
 	printf "\e[0;32m [v] $1\e[0m\n"
 }
-print_error() {
+
+print_error()
+{
 	printf "\e[0;31m [x] $1\e[0m\n"
 }
 
 declare -a dotfiles=(
-	'alacritty.yml'
 	'ctags'
 	'gitignore'
 	'gvimrc'
 	'tmux.conf'
-	# 'vim'
 	'vimrc'
-	'zprofile'
-	'zshrc'
 	'zshrc.local'
 )
 
@@ -32,10 +33,11 @@ declare -a linux_dotfiles=(
 	'xinitrc'
 	'Xresources'
 	'xscreensaver'
+	'zprofile'
 )
 
 while true; do
-	read -q "yn?Install linux dotfiles? "
+	read -q "yn?Install old linux dotfiles? "
 	case $yn in
 		[Yy]* ) dotfiles+=($linux_dotfiles); break;;
 		[Nn]* ) break;;

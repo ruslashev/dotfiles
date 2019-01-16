@@ -65,7 +65,7 @@ alias gdh='git diff --color=auto HEAD'
 alias gds='git diff --color=auto --staged'
 alias gcom='git commit'
 alias gcom!='git commit --amend'
-alias gcom!!='git commit --amend --no-edit'
+alias gcomm!='git commit --amend --no-edit'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all"
 alias gp='git push origin master'
 

@@ -68,6 +68,9 @@ alias gcom!='git commit --amend'
 alias gcomm!='git commit --amend --no-edit'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all"
 alias gp='git push origin master'
+alias grbc='git rebase --continue'
+
+alias tmrw='tmux rename-window'
 
 function mdd() {
 	mkdir -p $1 && cd $1

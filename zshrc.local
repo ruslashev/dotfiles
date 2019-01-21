@@ -49,7 +49,7 @@ alias dirsumeach='for i in *; do echo -n "$i: "; find $i -type f -exec cat {} + 
 alias ash='adb wait-for-device shell'
 alias adev='adb devices'
 alias akmsg='adb wait-for-device; echo connect; adb shell "while true; do cat /proc/kmsg | grep SW; done"'
-alias atest='adb shell /system/tee/tee_test'
+alias atest='adb shell /vendor/tee/tee_test'
 
 alias sdk='cd ~/work/sdk_tzsl'
 alias sk='cd ~/work/secure-kernel'

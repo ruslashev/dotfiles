@@ -96,7 +96,7 @@ let g:fzf_layout = { 'up': '~33%' }
 " Variable passed to shell for it to know it was opened with :shell
 let $FROMVIM=1
 
-" Key remaps ===================================================================
+" maps =========================================================================
 
 " Map tab to escape and Shift-Tab to literal Tab
 nnoremap <Tab> <Esc>
@@ -159,6 +159,7 @@ nnoremap <Leader>gp :GitGutterPreviewHunk<CR>
 nnoremap <Leader>gs :GitGutterStageHunk<CR>
 
 nnoremap Q @q
+
 nnoremap <S-l> gt
 nnoremap <S-h> gT
 
@@ -168,6 +169,8 @@ nnoremap gO moO<Esc>`o
 nmap <C-q> :q<CR>
 
 nnoremap zT :%foldc<CR>
+
+nnoremap gf <C-w>gF
 
 vnoremap <C-b> :<ESC>
               \:let _name=@%<CR>

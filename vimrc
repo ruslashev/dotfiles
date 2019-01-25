@@ -1,4 +1,4 @@
-" Plugins =======================================================================
+" plugins =======================================================================
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
@@ -57,7 +57,6 @@ let g:airline_right_sep = ''
 let g:airline_theme = 'solarized'
 let g:airline_section_z = '%3p%% %4l/%L:%3v'
 
-" yarp broke recently
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
@@ -97,15 +96,12 @@ let g:fzf_layout = { 'up': '~33%' }
 let $FROMVIM=1
 
 " maps =========================================================================
-
 " Map tab to escape and Shift-Tab to literal Tab
 nnoremap <Tab> <Esc>
 vnoremap <Tab> <Esc>gV
 onoremap <Tab> <Esc>
 inoremap <Tab> <Esc>`^
 inoremap <S-Tab> <Tab>
-
-" map <C-n> :Vexplore<CR>
 
 nnoremap <C-p> :Files<CR>
 
@@ -135,8 +131,6 @@ endfunction
 nmap <Leader>b :call BigSearch()<CR>
 
 nmap <Leader>m :!make<CR>
-
-" nmap <Leader>x :w<CR>:!chmod 755 %<CR>:e<CR>
 
 nmap <Leader>u :MundoToggle<CR>
 
@@ -183,7 +177,10 @@ vnoremap <C-b> :<ESC>
               \:setlocal noswapfile<CR>
               \ggdd<CR>
 
-" Sets =========================================================================
+" disable :X. purposedfully remap not to <nop>
+cnoreabbrev X asdf
+
+" sets =========================================================================
 set autoindent
 set autoread
 set autowrite                   " Auto write on :make, :shell and others
@@ -242,7 +239,7 @@ set wildignorecase
 set wildmenu
 set wildmode=longest:full,full
 
-" Autocmds =====================================================================
+" autocmds =====================================================================
 augroup language_specific_overrides
 	au!
 	au Filetype ruby    setlocal et sw=2
@@ -279,7 +276,7 @@ au BufWritePost * GitGutter
 
 au BufRead,BufNewFile *.s set filetype=nasm
 
-" Cosmetic =====================================================================
+" cosmetic =====================================================================
 if (&t_Co > 8 || has("gui_running")) && !exists("syntax_on")
 	syntax on
 endif
@@ -287,14 +284,12 @@ set background=dark
 colorscheme solarized
 call matchadd('ColorColumn', '\%101v', 100)
 
-" Commands =====================================================================
+" commands =====================================================================
 command! W w !sudo tee % > /dev/null
 
-" Disable :X
-set key=
-
-" there must be C-m here, but I am copypasting sources sometimes to update dotfiles
 command! Dos2Unix %s///
 
 command! StripTrailingWhitespace %s/\s\+$//
+
+command! ChmodX !chmod 755 %
 

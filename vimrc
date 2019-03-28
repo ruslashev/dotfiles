@@ -180,6 +180,9 @@ vnoremap <C-b> :<ESC>
 " disable :X. purposedfully remap not to <nop>
 cnoreabbrev X asdf
 
+nnoremap <Up> <C-y>
+nnoremap <Down> <C-e>
+
 " sets =========================================================================
 set autoindent
 set autoread

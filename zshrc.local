@@ -75,6 +75,7 @@ alias gp='git push origin master'
 alias grc='git rebase --continue'
 alias grom='git rebase origin/master'
 alias gf='git fetch' # tfw no
+alias gsh='git show'
 
 alias tmrw='tmux rename-window'
 alias tmrs='tmux rename-session'

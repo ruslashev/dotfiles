@@ -191,6 +191,7 @@ set backspace=2                 " Allow backspacing everywhere
 set cindent                     " C-style autoindenting
 set cinoptions=g0               " Align public:, private: etc in C++ to column 1
 set cinoptions+=ls              " switch case labels indentation
+set cinoptions+=:0              " also switch case labels indentation
 set cinoptions+=N-s             " don't indent in namespaces
 set colorcolumn=100
 set completeopt-=preview        " Don't show autocompletition window on top

@@ -2,10 +2,10 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
-Plug 'autozimu/LanguageClient-neovim', {
-            \ 'branch': 'next',
-            \ 'do': 'bash install.sh',
-            \ }
+" Plug 'autozimu/LanguageClient-neovim', {
+"             \ 'branch': 'next',
+"             \ 'do': 'bash install.sh',
+"             \ }
 Plug 'junegunn/fzf', { 'dir': '~/bin/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Konfekt/FastFold'
@@ -42,7 +42,7 @@ call plug#end()
 filetype plugin indent on
 
 " lets =========================================================================
-let g:python3_host_prog = '/usr/bin/python3.5'
+let g:python3_host_prog = '/usr/bin/python3.7'
 
 let g:mapleader = ","
 
@@ -121,7 +121,7 @@ nnoremap <Space> za
 vmap <Leader>s "sy:%s/<C-R>"/
 
 " Search for selected text in directory and open quickfix list
-vmap <Leader>v "sy:grep! <C-R>" **/*<CR>:cw<CR>
+vmap <Leader>v "sy:grep! <C-R>" -R --exclude=tags .<CR>:cw<CR>
 
 function! BigSearch()
 	let search = input("What to search: ")

@@ -79,6 +79,8 @@ alias gcom!='git commit --amend'
 alias gcomm!='git commit --amend --no-edit'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --abbrev-commit --all"
 alias glogabs="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --abbrev-commit --date=format:'%y-%m-%d %H:%M:%S' --all"
+alias glogfull="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%ar/%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all"
+alias glogabsfull="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%ad/%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=format:'%y-%m-%d %H:%M:%S' --all"
 alias gp='git push origin master'
 alias grc='git rebase --continue'
 alias grom='git rebase origin/master'

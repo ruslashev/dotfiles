@@ -55,7 +55,14 @@ alias atest='adb shell /vendor/tee/tee_test'
 alias aps='adb shell tee_ps'
 
 alias sdk='cd ~/work/sdk_tzsl'
+alias ta='cd ~/work/sdk_tzsl/tests/ta'
+alias ca='cd ~/work/sdk_tzsl/tests/client'
 alias sk='cd ~/work/secure-kernel'
+alias tzsl='cd ~/work/sdk_tzsl/src/tzsl'
+alias teesl='cd ~/work/sdk_tzsl/src/teesl'
+
+alias submit_sdk_head='~/bin/submit_to_review.py -O HEAD~1'
+alias submit_all_head='~/bin/submit_to_review.py -O HEAD~1 -E ../secure-kernel HEAD~1 '
 
 alias pip3_update='pip list --outdated --format=freeze | grep -v '\''^\-e'\'' | cut -d = -f 1  | xargs -n1 pip install --user --upgrade'
 
@@ -70,12 +77,14 @@ alias gds='git diff --color=auto --staged'
 alias gcom='git commit'
 alias gcom!='git commit --amend'
 alias gcomm!='git commit --amend --no-edit'
-alias glog="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all"
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --abbrev-commit --all"
+alias glogabs="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --abbrev-commit --date=format:'%y-%m-%d %H:%M:%S' --all"
 alias gp='git push origin master'
 alias grc='git rebase --continue'
 alias grom='git rebase origin/master'
 alias gf='git fetch' # tfw no
 alias gsh='git show'
+alias grh='git reset HEAD'
 
 alias tmrw='tmux rename-window'
 alias tmrs='tmux rename-session'

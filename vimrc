@@ -125,7 +125,7 @@ vmap <Leader>v "sy:grep! <C-R>" -R --exclude=tags .<CR>:cw<CR>
 
 function! BigSearch()
 	let search = input("What to search: ")
-	execute ":grep! " . search . " **/*"
+	execute ":grep! " . search . " -R --exclude=tags ."
 	cw
 endfunction
 nmap <Leader>b :call BigSearch()<CR>

@@ -91,6 +91,8 @@ alias grh='git reset HEAD'
 alias tmrw='tmux rename-window'
 alias tmrs='tmux rename-session'
 
+alias relf='readelf -W -a'
+
 function mdd() {
 	mkdir -p $1 && cd $1
 }

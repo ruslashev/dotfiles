@@ -6,6 +6,7 @@ Plug 'airblade/vim-gitgutter'
 "             \ 'branch': 'next',
 "             \ 'do': 'bash install.sh',
 "             \ }
+Plug 'deoplete-plugins/deoplete-clang'
 Plug 'junegunn/fzf', { 'dir': '~/bin/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Konfekt/FastFold'
@@ -35,7 +36,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-erlang/vim-erlang-runtime', { 'for': 'erlang' }
 Plug 'w0rp/ale'
-Plug 'zchee/deoplete-clang'
 
 call plug#end()
 
@@ -183,6 +183,8 @@ cnoreabbrev X asdf
 nnoremap <Up> <C-y>
 nnoremap <Down> <C-e>
 
+vnoremap gi g<C-a>
+
 " sets =========================================================================
 set autoindent
 set autoread
@@ -279,6 +281,7 @@ augroup END
 au BufWritePost * GitGutter
 
 au BufRead,BufNewFile *.s set filetype=nasm
+au BufRead,BufNewFile *.asm set filetype=nasm
 
 " cosmetic =====================================================================
 if (&t_Co > 8 || has("gui_running")) && !exists("syntax_on")

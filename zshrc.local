@@ -72,21 +72,22 @@ alias gada='git add -A'
 alias gadu='git add -u'
 alias gco='git checkout'
 alias gd='git diff --color=auto'
-alias gdh='git diff --color=auto HEAD'
 alias gds='git diff --color=auto --staged'
 alias gcom='git commit'
 alias gcom!='git commit --amend'
 alias gcomm!='git commit --amend --no-edit'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --abbrev-commit --all"
-alias glogabs="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --abbrev-commit --date=format:'%y-%m-%d %H:%M:%S' --all"
+alias glogfull="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --abbrev-commit --date=format:'%y-%m-%d %H:%M:%S' --all"
 alias glogc="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all"
-alias glogabsc="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=format:'%y-%m-%d %H:%M:%S' --all"
+alias glogfullc="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=format:'%y-%m-%d %H:%M:%S' --all"
 alias gp='git push origin master'
 alias grc='git rebase --continue'
 alias grom='git rebase origin/master'
 alias gf='git fetch' # tfw no
 alias gsh='git show'
 alias grh='git reset HEAD'
+alias gr='git rebase'
+alias gpl='git pull'
 
 alias tmrw='tmux rename-window'
 alias tmrs='tmux rename-session'

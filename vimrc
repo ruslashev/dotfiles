@@ -174,7 +174,6 @@ vnoremap <C-b> :<ESC>
               \:execute("r !git blame "._name." -L"._begin.","._end)<CR>
               \:setlocal buftype=nofile<CR>
               \:setlocal bufhidden=hide<CR>
-              \:setlocal noswapfile<CR>
               \ggdd<CR>
 
 " disable :X. purposedfully remap not to <nop>
@@ -234,7 +233,7 @@ set smartcase                  " Ignore case
 set splitright                  " Split new (vertical) windows to the right
 set synmaxcol=200               " stop syntax highlighting past this column
 set tabpagemax=50               " 50 tabs (:tabe, vim -p, ..) max
-set tabstop=4                   " A tab character is displayed as 4 spaces max
+set tabstop=8                   " A tab character is displayed as 4 spaces max
 set textwidth=100               " Auto break text exceeding 100 chars
 set undodir=~/.vim/undo
 set undofile
@@ -254,7 +253,6 @@ augroup language_specific_overrides
 	au FileType erlang  let b:printf_pattern = 'io:format("%p~n", [%s]),'
 	au FileType c       set commentstring=\/*\ %s\ *\/
 	au FileType cpp     set commentstring=\/\/\ %s
-	au FileType cpp     setlocal et ts=4 sw=4
 	au Filetype scheme  setlocal expandtab sw=4 lispwords-=define
 	au FileType help    wincmd K
 	au FileType nasm    set commentstring=;\ %s

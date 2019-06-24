@@ -171,6 +171,7 @@ vnoremap <C-b> :<ESC>
               \:let _begin=line("'<")<CR>
               \:let _end=line("'>")<CR>
               \:tabedit<CR>
+              \:tabm -1<CR>
               \:execute("r !git blame "._name." -L"._begin.","._end)<CR>
               \:setlocal buftype=nofile<CR>
               \:setlocal bufhidden=hide<CR>

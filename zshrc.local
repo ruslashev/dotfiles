@@ -55,9 +55,9 @@ alias atest='adb shell /vendor/tee/tee_test'
 alias aps='adb shell tee_ps'
 
 alias sdk='cd ~/work/sdk_tzsl'
+alias sk='cd ~/work/secure-kernel'
 alias ta='cd ~/work/sdk_tzsl/tests/ta'
 alias ca='cd ~/work/sdk_tzsl/tests/client'
-alias sk='cd ~/work/secure-kernel'
 alias tzsl='cd ~/work/sdk_tzsl/src/tzsl'
 alias teesl='cd ~/work/sdk_tzsl/src/teesl'
 
@@ -93,6 +93,8 @@ alias tmrw='tmux rename-window'
 alias tmrs='tmux rename-session'
 
 alias relf='readelf -W -a'
+
+alias t='tree'
 
 function mdd() {
 	mkdir -p $1 && cd $1

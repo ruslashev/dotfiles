@@ -19,6 +19,8 @@ export EDITOR="vim"
 
 export MANWIDTH=${MANWIDTH:-80}
 
+export RIPGREP_CONFIG_PATH=$HOME/dotfiles/ripgreprc
+
 setopt auto_cd              # Change dir without cd
 setopt complete_in_word     # Not just at the end
 setopt always_to_end        # When complete from middle, move cursor
@@ -95,6 +97,9 @@ alias tmrs='tmux rename-session'
 alias relf='readelf -W -a'
 
 alias t='tree'
+
+alias sqi='s q i'
+alias vbjson='vim ~/work/sdk_tzsl/tests/autotest/scenarios/base.json'
 
 function mdd() {
 	mkdir -p $1 && cd $1

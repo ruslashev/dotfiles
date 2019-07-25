@@ -177,6 +177,15 @@ vnoremap <C-b> :<ESC>
               \:setlocal bufhidden=hide<CR>
               \ggdd<CR>
 
+vnoremap <C-g> :<ESC>
+              \:tabedit<CR>
+              \:tabm -1<CR>
+              \:execute("r !git show " . getreg('*'))<CR>
+              \:setlocal buftype=nofile<CR>
+              \:setlocal bufhidden=hide<CR>
+              \:setlocal filetype=diff<CR>
+              \ggdd<CR>
+
 " disable :X. purposedfully remap not to <nop>
 cnoreabbrev X asdf
 

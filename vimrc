@@ -288,8 +288,9 @@ augroup END
 
 au BufWritePost * GitGutter
 
-au BufRead,BufNewFile *.s set filetype=nasm
+au BufRead,BufNewFile *.s   set filetype=nasm
 au BufRead,BufNewFile *.asm set filetype=nasm
+au BufRead,BufNewFile *.h   set filetype=c
 
 " cosmetic =====================================================================
 if (&t_Co > 8 || has("gui_running")) && !exists("syntax_on")

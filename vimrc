@@ -121,11 +121,11 @@ nnoremap <Space> za
 vmap <Leader>s "sy:%s/<C-R>"/
 
 " Search for selected text in directory and open quickfix list
-vmap <Leader>v "sy:grep! <C-R>" -R --exclude=tags .<CR>:cw<CR>
+vmap <Leader>v "sy:grep! <C-R>"<CR>:cw<CR>
 
 function! BigSearch()
 	let search = input("What to search: ")
-	execute ":grep! " . search . " -R --exclude=tags ."
+	execute ":grep! " . search
 	cw
 endfunction
 nmap <Leader>b :call BigSearch()<CR>
@@ -218,6 +218,8 @@ set formatoptions+=tqc          " default options for auto wrapping at textwidth
 set formatoptions-=ro           " don't insert comments on new lines
 set formatoptions+=nj           " dunno lol
 set gdefault                    " g flag by default in substitutions
+set grepprg=rg\ --vimgrep\ -g\ \!tags
+set grepformat=%f:%l:%c:%m
 set history=1000                " :command history
 set hidden
 set ignorecase                  " Ignore case when searching

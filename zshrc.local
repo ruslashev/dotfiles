@@ -44,6 +44,7 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 alias m='make'
 
 alias vim='vim -p'
+alias v='vim'
 
 alias fn='find . -name'
 
@@ -57,7 +58,9 @@ alias atest='adb shell /vendor/tee/tee_test'
 alias aps='adb shell tee_ps'
 
 alias sdk='cd ~/work/sdk_tzsl'
+alias sdk4='cd ~/work/main4/sdk_tzsl_main4'
 alias sk='cd ~/work/secure-kernel'
+alias sk='cd ~/work/main4/secure-kernel_main4'
 alias ta='cd ~/work/sdk_tzsl/tests/ta'
 alias ca='cd ~/work/sdk_tzsl/tests/client'
 alias tzsl='cd ~/work/sdk_tzsl/src/tzsl'

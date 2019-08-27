@@ -120,7 +120,7 @@ vmap <Leader>s "sy:%s/<C-R>"/
 vmap <Leader>v "sy:grep! <C-R>"<CR>:cw<CR>
 
 function! BigSearch()
-	let search = input("What to search: ")
+	let search = input("rg ")
 	execute ":grep! " . search
 	cw
 endfunction

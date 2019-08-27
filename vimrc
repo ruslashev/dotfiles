@@ -224,7 +224,7 @@ set laststatus=2                " Always show status bar
 set lazyredraw                  " Don't redraw while executing macros
 set list listchars=tab:\|─,trail:·,nbsp:↔ " Display nonprintable characters
 set matchtime=3                 " Time to show matching bracket
-set mouse=""                    " Disable mouse
+set mouse=a                     " enable mouse
 set nobackup                    " Don't backup before overwrite
 set noshowmode                  " No need to show mode thanks to airline
 set nostartofline               " Leave cursor position on <C-d>, G, dd, >> etc

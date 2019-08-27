@@ -121,7 +121,7 @@ vmap <Leader>v "sy:grep! <C-R>"<CR>:cw<CR>
 
 function! BigSearch()
 	let search = input("rg ")
-	execute ":grep! " . search
+	execute ":grep! '" . search . "'"
 	cw
 endfunction
 nmap <Leader>b :call BigSearch()<CR>

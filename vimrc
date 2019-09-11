@@ -3,6 +3,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'deoplete-plugins/deoplete-clang'
+Plug 'dense-analysis/ale'
 Plug 'junegunn/fzf', { 'dir': '~/bin/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Konfekt/FastFold'
@@ -31,7 +32,6 @@ Plug 'travitch/hasksyn', { 'for': 'haskell' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-erlang/vim-erlang-runtime', { 'for': 'erlang' }
-Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -265,6 +265,7 @@ augroup language_specific_overrides
 	au FileType help    wincmd K
 	au FileType nasm    set commentstring=;\ %s
 	au FileType *       setlocal formatoptions-=o
+	au FileType qf      nnoremap <buffer> <Enter> <C-W><Enter><C-W>T
 augroup END
 
 augroup line_numbers

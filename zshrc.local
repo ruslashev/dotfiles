@@ -45,6 +45,7 @@ alias m='make'
 
 alias vim='vim -p'
 alias v='vim'
+alias vp='vim -'
 
 alias fn='find . -name'
 

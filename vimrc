@@ -40,6 +40,10 @@ filetype plugin indent on
 " lets =========================================================================
 let g:python3_host_prog = '/usr/bin/python3.7'
 
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang.so'
+let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
+
 let g:mapleader = ","
 
 let g:airline#extensions#tabline#close_symbol = 'x'
@@ -52,10 +56,6 @@ let g:airline_right_alt_sep = '|'
 let g:airline_right_sep = ''
 let g:airline_theme = 'solarized'
 let g:airline_section_z = '%3p%% %4l/%L:%3v'
-
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang.so'
-let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
 
 " Proper HTML autoindentation
 let g:html_indent_inctags = "head,html,body,p,table,tbody,div,script,section"

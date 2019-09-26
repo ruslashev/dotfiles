@@ -21,7 +21,6 @@ print_error()
 
 declare -a dotfiles=(
 	'ctags'
-	'gitignore'
 	'gvimrc'
 	'tmux.conf'
 	'vimrc'

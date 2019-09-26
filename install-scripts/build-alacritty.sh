@@ -3,8 +3,8 @@
 rustup override set stable
 rustup update stable
 
-cd ~/dotfiles
-
+mkdir -p ~/build
+cd ~/build
 rm -rf alacritty
 
 git clone https://github.com/jwilm/alacritty.git

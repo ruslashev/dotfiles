@@ -29,11 +29,11 @@ declare -a dotfiles=(
 )
 
 declare -a linux_dotfiles=(
-	'conkyrc'
-	'xinitrc'
-	'Xresources'
-	'xscreensaver'
-	'zprofile'
+	'old/conkyrc'
+	'old/xinitrc'
+	'old/Xresources'
+	'old/xscreensaver'
+	'old/zprofile'
 )
 
 while true; do

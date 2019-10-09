@@ -170,8 +170,6 @@ function git_get_branch() {
 }
 
 function git_prompt_status() {
-	load_colors
-
 	local ZSH_THEME_GIT_PROMPT_ADDED="${GREEN}+"
 	local ZSH_THEME_GIT_PROMPT_MODIFIED="${BLUE}*"
 	local ZSH_THEME_GIT_PROMPT_DELETED="${RED}-"
@@ -209,8 +207,6 @@ function git_prompt_status() {
 	if $(command git rev-parse --verify refs/stash >/dev/null 2>&1); then
 		STATUS="$ZSH_THEME_GIT_PROMPT_STASHED$STATUS"
 	fi
-
-	unload_colors
 
 	echo $STATUS
 }

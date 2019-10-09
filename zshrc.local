@@ -106,6 +106,7 @@ alias tmrw='tmux rename-window'
 alias tmrs='tmux rename-session'
 
 alias relf='readelf -W -a'
+alias objd='objdump -D -M intel'
 
 alias t='tree'
 

@@ -190,6 +190,9 @@ nnoremap <Down> <C-e>
 
 vnoremap gi g<C-a>
 
+nnoremap [a :ALEPrevious<CR>
+nnoremap ]a :ALENext<CR>
+
 " sets =========================================================================
 set autoindent
 set autoread

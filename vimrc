@@ -147,6 +147,8 @@ nmap <Leader>p :Printf<CR>
 nnoremap <Leader>gu :GitGutterUndoHunk<CR>
 nnoremap <Leader>gp :GitGutterPreviewHunk<CR>
 nnoremap <Leader>gs :GitGutterStageHunk<CR>
+nnoremap <Leader>ge :GitGutterEnable<CR>
+nnoremap <Leader>gd :GitGutterDisable<CR>
 
 nnoremap Q @q
 

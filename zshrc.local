@@ -97,6 +97,7 @@ alias grh='git reset HEAD'
 alias gpl='git pull'
 alias gssh='git stash'
 alias gsshp='git stash pop'
+alias gb='git branch'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --abbrev-commit --all"
 alias glfull="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --abbrev-commit --date=format:'%y-%m-%d %H:%M:%S' --all"
 alias glc="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all"

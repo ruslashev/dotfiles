@@ -110,8 +110,8 @@ alias relf='readelf -W -a'
 alias objd='objdump -D -M intel'
 
 alias t='tree'
-
 alias c='cat'
+alias b='bat'
 
 function mdd() {
 	mkdir -p $1 && cd $1

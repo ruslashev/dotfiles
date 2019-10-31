@@ -4,9 +4,14 @@ git config --global core.excludesfile ~/dotfiles/gitignore
 
 binary=$(find -L /usr -name diff-highlight -type f 2> /dev/null | head -n 1)
 
-git config --global core.pager $binary
+sudo chmod +x $binary
 
 cat <<HERE >> ~/.gitconfig
+[pager]
+	log = $binary | less
+	show = $binary | less
+	diff = $binary | less
+
 [color "diff"]
 	commit = blue
 	meta = yellow

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 cd ~/dotfiles/install-scripts/
 
 echo '=== 1/10: packages.sh'

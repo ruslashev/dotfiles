@@ -2,8 +2,8 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
-Plug 'deoplete-plugins/deoplete-clang'
 Plug 'dense-analysis/ale'
+Plug 'deoplete-plugins/deoplete-clang'
 Plug 'junegunn/fzf', { 'dir': '~/bin/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Konfekt/FastFold'
@@ -30,7 +30,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'travitch/hasksyn', { 'for': 'haskell' }
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline-themes', { 'commit': 'b85165844240fe0b9121df487679a320e053abc7' }
 Plug 'vim-erlang/vim-erlang-runtime', { 'for': 'erlang' }
 
 call plug#end()

@@ -3,8 +3,7 @@
 
 # export TERM="rxvt-unicode-256color"
 
-# export ADB_TRACE=all
-unalias ag
+[ -f ~/dotfiles/host/$HOST.zsh ] && source ~/dotfiles/host/$HOST.zsh
 
 export PATH=$PATH:~/bin
 export PATH=$PATH:~/bin/bin
@@ -52,27 +51,6 @@ alias fn='find . -name'
 
 alias dirsum='echo -n "$(basename $(pwd)): " && find . -type f -exec cat {} + | md5sum'
 alias dirsumeach='for i in *; do echo -n "$i: "; find $i -type f -exec cat {} + | md5sum; done'
-
-alias ash='adb wait-for-device shell'
-alias adev='adb devices'
-alias akmsg='adb wait-for-device; echo connect; adb shell "while true; do cat /proc/kmsg | grep SW; done"'
-alias atest='adb shell /vendor/tee/tee_test'
-alias aps='adb shell tee_ps'
-
-alias sdk='cd ~/work/sdk_tzsl'
-alias sdk4='cd ~/work/main4/sdk_tzsl_main4'
-alias sk='cd ~/work/secure-kernel'
-alias sk4='cd ~/work/main4/secure-kernel_main4'
-alias ta='cd ~/work/sdk_tzsl/tests/ta'
-alias ca='cd ~/work/sdk_tzsl/tests/client'
-alias tzsl='cd ~/work/sdk_tzsl/src/tzsl'
-alias teesl='cd ~/work/sdk_tzsl/src/teesl'
-
-alias submit_sdk_head='~/bin/submit_to_review.py -O HEAD~1'
-alias submit_all_head='~/bin/submit_to_review.py -O HEAD~1 -E ../secure-kernel HEAD~1 '
-
-alias sqi='s q i'
-alias vbjson='vim ~/work/sdk_tzsl/tests/autotest/scenarios/base.json'
 
 alias pip3_update='pip list --outdated --format=freeze | grep -v '\''^\-e'\'' | cut -d = -f 1  | xargs -n1 pip install --user --upgrade'
 

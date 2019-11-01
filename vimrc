@@ -69,6 +69,7 @@ let g:ale_linters = {
       \ 'c': [ 'clang', 'gcc' ],
       \ 'cpp': [ 'clang', 'clangcheck', 'clang-format', 'cppcheck', 'cpplint', 'g++' ]
       \ }
+let g:ale_lint_delay = 0
 let g:ale_cpp_clangcheck_options = '-std=c++14'
 let g:ale_c_clang_options = ''
 let g:ale_c_gcc_options = ''
@@ -250,6 +251,7 @@ set tabstop=8                   " A tab character is displayed as 4 spaces max
 set textwidth=100               " Auto break text exceeding 100 chars
 set undodir=~/.vim/undo
 set undofile
+set updatetime=100              " used by vim-gitgutter
 set visualbell                  " Don't flash screen
 set whichwrap+=<,>,h,l          " Wrap h, l, and cursor keys to other lines
 set wildignore=*.bak,*.pyc,*.class,*.o,.git

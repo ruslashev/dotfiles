@@ -1,10 +1,38 @@
 #!/bin/bash
 
+set -e
+
 git config --global core.excludesfile ~/dotfiles/gitignore
 
 binary=$(find -L /usr -name diff-highlight -type f 2> /dev/null | head -n 1)
 
-sudo chmod +x $binary
+# fucking debian
+if [[ -z $binary ]]; then
+    echo "diff-highlight biary not built"
+
+    script=$(find -L /usr -name diff-highlight.perl -type f 2> /dev/null | head -n 1)
+    if [[ -z $script ]]; then
+        echo 'diff-highlight.perl script not found'
+        exit 1
+    fi
+
+    dir=$(dirname $script)
+
+    echo "found unbuit diff-highlight at $dir"
+
+    cd $dir
+    sudo make
+
+    binary=$(find -L /usr -name diff-highlight -type f 2> /dev/null | head -n 1)
+    if [[ -z $binary ]]; then
+        echo "binary not found after successful build"
+        exit 1
+    fi
+else
+    echo "found diff-highlight binary at $binary"
+    sudo chmod +x $binary
+fi
+
 
 cat <<HERE >> ~/.gitconfig
 [pager]

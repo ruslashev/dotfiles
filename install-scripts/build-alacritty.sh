@@ -9,6 +9,7 @@ rm -rf alacritty
 
 git clone https://github.com/jwilm/alacritty.git
 cd alacritty
+git checkout -b good 52fecd7
 
 cargo build --release
 

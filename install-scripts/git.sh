@@ -18,7 +18,7 @@ if [[ -z $binary ]]; then
 
     dir=$(dirname $script)
 
-    echo "found unbuit diff-highlight at $dir"
+    echo "found unbuilt diff-highlight at $dir"
 
     cd $dir
     sudo make
@@ -28,11 +28,12 @@ if [[ -z $binary ]]; then
         echo "binary not found after successful build"
         exit 1
     fi
+
+    echo "built diff-highlight binary at $binary"
 else
     echo "found diff-highlight binary at $binary"
     sudo chmod +x $binary
 fi
-
 
 cat <<HERE >> ~/.gitconfig
 [pager]
@@ -55,3 +56,4 @@ cat <<HERE >> ~/.gitconfig
 	newHighlight = green 22
 
 HERE
+

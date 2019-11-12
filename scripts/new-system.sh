@@ -2,7 +2,7 @@
 
 set -e
 
-cd ~/dotfiles/install-scripts/
+cd ~/dotfiles/scripts/
 
 echo '=== 1/10: packages.sh'
 ./packages.sh

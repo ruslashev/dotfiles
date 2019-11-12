@@ -1,13 +1,13 @@
 #!/bin/zsh
 
-mkdir ~/.vim/
-mkdir ~/.vim/colors
-mkdir ~/.vim/undo
+mkdir -p ~/.vim/
+mkdir -p ~/.vim/colors
+mkdir -p ~/.vim/undo
 
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-cp ~/dotfiles/vim/colors/solarized.vim ~/.vim/colors
+ln -s $(pwd)/../vim/colors/solarized.vim ~/.vim/colors/solarized.vim
 
 vim -c PlugInstall ~/.vimrc
 

@@ -134,7 +134,27 @@
 " Allow or disallow certain features based on current terminal emulator or 
 " environment.
 
+" Terminals that support italics
+let s:terms_italic=[
+            \"rxvt",
+            \"gnome-terminal"
+            \]
+" For reference only, terminals are known to be incomptible.
+" Terminals that are in neither list need to be tested.
+let s:terms_noitalic=[
+            \"iTerm.app",
+            \"Apple_Terminal"
+            \]
+if has("gui_running")
+    let s:terminal_italic=1 " TODO: could refactor to not require this at all
+else
+    let s:terminal_italic=0 " terminals will be guilty until proven compatible
+    for term in s:terms_italic
+        if $TERM_PROGRAM =~ term
 let s:terminal_italic=1
+        endif
+    endfor
+endif
 
 " }}}
 " Default option values"{{{
@@ -586,8 +606,8 @@ elseif  (g:solarized_visibility=="low")
     exe "hi! SpecialKey" .s:fmt_bold   .s:fg_base02 .s:bg_none
     exe "hi! NonText"    .s:fmt_bold   .s:fg_base02 .s:bg_none
 else
-    exe "hi! SpecialKey" .s:fmt_none   .s:fg_base02 .s:bg_none
-    exe "hi! NonText"    .s:fmt_none   .s:fg_base02 .s:bg_none
+    exe "hi! SpecialKey" .s:fmt_none   .s:fg_base01 .s:bg_none
+    exe "hi! NonText"    .s:fmt_none   .s:fg_base01 .s:bg_none
 endif
 exe "hi! StatusLine"     .s:fmt_none   .s:fg_base1  .s:bg_base02 .s:fmt_revbb
 exe "hi! StatusLineNC"   .s:fmt_none   .s:fg_base00 .s:bg_base02 .s:fmt_revbb
@@ -1095,3 +1115,4 @@ autocmd ColorScheme * if g:colors_name != "solarized" | silent! aunmenu Solarize
 "
 " vim:foldmethod=marker:foldlevel=0
 "}}}
+

@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 # Credit to https://github.com/nicksp/dotfiles/blob/master/setup.sh
 

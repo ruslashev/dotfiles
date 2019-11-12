@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 mkdir -p ~/.vim/
 mkdir -p ~/.vim/colors

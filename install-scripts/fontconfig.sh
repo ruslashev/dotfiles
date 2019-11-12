@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 mkdir -p ~/.config/fontconfig
 

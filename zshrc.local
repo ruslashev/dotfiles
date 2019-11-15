@@ -21,6 +21,8 @@ export MANWIDTH=${MANWIDTH:-80}
 
 export RIPGREP_CONFIG_PATH=$HOME/dotfiles/ripgreprc
 
+export BAT_THEME="Monokai Extended Bright"
+
 setopt auto_cd              # Change dir without cd
 setopt complete_in_word     # Not just at the end
 setopt always_to_end        # When complete from middle, move cursor

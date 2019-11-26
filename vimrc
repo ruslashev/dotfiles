@@ -41,7 +41,7 @@ filetype plugin indent on
 let g:python3_host_prog = '/usr/bin/python3.7'
 
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang.so'
+let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-9/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
 
 let g:mapleader = ","
@@ -243,7 +243,7 @@ set shiftwidth=4                " An indent is 4 spaces
 set showcmd                     " Show command being typed
 set showmatch                   " Show matching bracket
 set sidescrolloff=5             " How many lines to keep visible when scrolling
-set smartcase                  " Ignore case
+set smartcase                   " Ignore case
 set splitright                  " Split new (vertical) windows to the right
 set synmaxcol=200               " stop syntax highlighting past this column
 set tabpagemax=50               " 50 tabs (:tabe, vim -p, ..) max

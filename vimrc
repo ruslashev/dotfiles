@@ -66,7 +66,7 @@ let g:html_indent_style1 = "inc"
 let g:ale_sign_error = 'x>'
 let g:ale_sign_warning = '!>'
 let g:ale_linters = {
-      \ 'c': [ 'clang', 'gcc' ],
+      \ 'c': [ 'ccls', 'clang', 'clangd', 'clang-format', 'clangtidy', 'cppcheck', 'cpplint', 'cquery', 'gcc', 'uncrustify' ],
       \ 'cpp': [ 'clang', 'clangcheck', 'clang-format', 'cppcheck', 'cpplint', 'g++' ]
       \ }
 let g:ale_lint_delay = 0
@@ -266,6 +266,7 @@ augroup language_specific_overrides
 	au Filetype haskell setlocal et sw=4
 	au Filetype erlang  setlocal et sw=4
 	au FileType erlang  let b:printf_pattern = 'io:format("%p~n", [%s]),'
+	au FileType rust    let b:printf_pattern = 'println!("%s", %s);'
 	au FileType c       set commentstring=\/*\ %s\ *\/
 	au FileType cpp     set commentstring=\/\/\ %s
 	au Filetype scheme  setlocal expandtab sw=4 lispwords-=define

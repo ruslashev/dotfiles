@@ -97,6 +97,8 @@ function mdd() {
 	mkdir -p $1 && cd $1
 }
 
+eval $(dircolors ~/dotfiles/seebi-dircolors-solarized)
+
 set -o vi
 
 source ~/dotfiles/prompt.zsh

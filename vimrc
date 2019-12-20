@@ -4,6 +4,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'dense-analysis/ale'
 Plug 'deoplete-plugins/deoplete-clang'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'junegunn/fzf', { 'dir': '~/bin/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Konfekt/FastFold'
@@ -86,6 +87,8 @@ let g:netrw_winsize = 25
 let g:lion_squeeze_spaces = 1
 
 let g:fzf_layout = { 'up': '~33%' }
+
+let g:mkdp_page_title = '${name}'
 
 " let g:gutentags_tagfile = '.git/tags'
 

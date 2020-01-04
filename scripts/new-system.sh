@@ -25,11 +25,11 @@ echo '=== 6/10: alacritty.sh'
 echo '=== 7/10: rustup.sh'
 ./rustup.sh
 
-echo '=== 8/10: build-alacritty.sh'
-./build-alacritty.sh
-
-echo '=== 9/10: monaco.sh'
+echo '=== 8/10: monaco.sh'
 ./monaco.sh
+
+echo '=== 9/10: build-alacritty.sh'
+./build-alacritty.sh
 
 echo '=== 10/10: vim.sh'
 ./vim.sh

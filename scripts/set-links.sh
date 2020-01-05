@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Credit to https://github.com/nicksp/dotfiles/blob/master/setup.sh
 
@@ -27,7 +27,7 @@ declare -a dotfiles=(
 	'zshrc.local'
 )
 
-declare -a linux_dotfiles=(
+declare -a old_linux_dotfiles=(
 	'old/conkyrc'
 	'old/xinitrc'
 	'old/Xresources'
@@ -38,7 +38,7 @@ declare -a linux_dotfiles=(
 while true; do
 	read -q "yn?Install old linux dotfiles? "
 	case $yn in
-		[Yy]* ) dotfiles+=($linux_dotfiles); break;;
+		[Yy]* ) dotfiles+=($old_linux_dotfiles); break;;
 		[Nn]* ) break;;
 		* ) echo "y or n.";;
 	esac
@@ -46,15 +46,17 @@ done
 
 echo
 
+cd ~/dotfiles
+
 for i in $dotfiles; do
-	target="$(pwd)/../$i"
+	target="$(pwd)/$i"
 	link_name="$HOME/.$i"
 
 	if [[ ! -e "$link_name" ]]; then
 		ln -sf "$target" "$link_name"
 		print_result $? "$link_name -> $target"
 	elif [[ "$(readlink "$link_name")" == "$target" ]]; then
-		print_success "already exists: $link_name -> $target"
+		print_success "link already exists: $link_name -> $target"
 	else
 		local target_type=""
 		if [[ -d "$target" ]]; then

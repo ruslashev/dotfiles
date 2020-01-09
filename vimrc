@@ -8,7 +8,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'junegunn/fzf', { 'dir': '~/bin/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Konfekt/FastFold'
-Plug 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags', { 'commit': 'aa67e48f6c071ef4179dc30ac24ddf93e5eb6338' }
 Plug 'majutsushi/tagbar'
 Plug 'mptre/vim-printf'
 Plug 'neovim/python-client', { 'do': 'pip3 install neovim --user' }
@@ -90,7 +90,7 @@ let g:fzf_layout = { 'up': '~33%' }
 
 let g:mkdp_page_title = '${name}'
 
-" let g:gutentags_tagfile = '.git/tags'
+let g:gutentags_ctags_tagfile = '.git/tags'
 
 " Variable passed to shell for it to know it was opened with :shell
 let $FROMVIM=1

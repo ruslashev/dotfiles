@@ -2,13 +2,13 @@
 
 set -e
 
-git config --global core.excludesfile ~/dotfiles/gitignore
+git config --global core.excludesfile ~/dotfiles/host/gitignore
 
 binary=$(find -L /usr -name diff-highlight -type f 2> /dev/null | head -n 1)
 
 # fucking debian
 if [[ -z $binary ]]; then
-    echo "diff-highlight biary not built"
+    echo "diff-highlight binary not built"
 
     script=$(find -L /usr -name diff-highlight.perl -type f 2> /dev/null | head -n 1)
     if [[ -z $script ]]; then

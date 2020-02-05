@@ -174,7 +174,7 @@ vnoremap <C-b> :<ESC>
               \:let _end=line("'>")<CR>
               \:tabedit<CR>
               \:tabm -1<CR>
-              \:execute("r !git blame "._name." -L"._begin.","._end)<CR>
+              \:execute("r !git blame --date=format:'\\%Y-\\%m-\\%d' "._name." -L"._begin.","._end)<CR>
               \:setlocal buftype=nofile<CR>
               \:setlocal bufhidden=hide<CR>
               \ggdd<CR>
@@ -185,7 +185,7 @@ vnoremap <C-g> :<ESC>
               \:execute("r !git show " . getreg('*'))<CR>
               \:setlocal buftype=nofile<CR>
               \:setlocal bufhidden=hide<CR>
-              \:setlocal filetype=diff<CR>
+              \:setlocal filetype=git<CR>
               \ggdd<CR>
 
 " disable :X. purposedfully remap not to <nop>

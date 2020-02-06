@@ -1,7 +1,7 @@
---colors=line:fg:yellow
---colors=line:style:bold
---colors=path:fg:green
---colors=path:style:bold
+--colors=line:fg:blue
+--colors=line:style:nobold
+--colors=path:fg:red
+--colors=path:style:nobold
 --colors=match:fg:black
 --colors=match:bg:yellow
 --colors=match:style:nobold

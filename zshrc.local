@@ -49,6 +49,10 @@ alias vim='vim -p'
 alias v='vim'
 alias vp='vim -'
 
+alias t='tree'
+alias c='cat'
+alias b='bat'
+
 alias fn='find . -name'
 
 alias dirsum='echo -n "$(basename $(pwd)): " && find . -type f -exec cat {} + | md5sum'
@@ -78,6 +82,9 @@ alias gpl='git pull'
 alias gssh='git stash'
 alias gsshp='git stash pop'
 alias gb='git branch'
+alias gbs='git bisect start'
+alias gbb='git bisect bad'
+alias gbg='git bisect good'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%ar) %C(blue)<%an>%Creset' --abbrev-commit --all"
 alias glfull="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%ad) %C(blue)<%an>%Creset' --abbrev-commit --date=format:'%y-%m-%d %H:%M:%S' --all"
 alias glc="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --all"
@@ -88,10 +95,6 @@ alias tmrs='tmux rename-session'
 
 alias relf='readelf -W -a'
 alias objd='objdump -D -M intel'
-
-alias t='tree'
-alias c='cat'
-alias b='bat'
 
 function mdd() {
 	mkdir -p $1 && cd $1

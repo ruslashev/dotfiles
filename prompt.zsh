@@ -36,24 +36,26 @@ function unload_colors() {
 load_colors
 
 prompt off
-local user_color="${GREEN}"
-[ $UID -eq 0 ] && user_color="${RED}"
-local user="${user_color}%n${NO_COLOR}"
-local dir="${BLUE}%1~${NO_COLOR}"
 
-PROMPT="$user $dir ${user_color}$ ${NO_COLOR}"
+local user_color="$GREEN"
+[ $UID -eq 0 ] && user_color="$RED"
+local username="$user_color%n$NO_COLOR"
+local dir="$BLUE%1~$NO_COLOR"
+local symbol="$user_color%(!.#.$)$NO_COLOR"
+
+export PROMPT="$username $dir $symbol "
 
 function git_get_branch() {
 	git symbolic-ref HEAD 2> /dev/null | sed 's|refs/heads/||'
 }
 
 function git_prompt_status() {
-	local ZSH_THEME_GIT_PROMPT_ADDED="${GREEN}+"
-	local ZSH_THEME_GIT_PROMPT_MODIFIED="${BLUE}*"
-	local ZSH_THEME_GIT_PROMPT_DELETED="${RED}-"
-	local ZSH_THEME_GIT_PROMPT_STASHED="${YELLOW}#"
+	local ZSH_THEME_GIT_PROMPT_ADDED="$GREEN+"
+	local ZSH_THEME_GIT_PROMPT_MODIFIED="$BLUE*"
+	local ZSH_THEME_GIT_PROMPT_DELETED="$RED-"
+	local ZSH_THEME_GIT_PROMPT_STASHED="$YELLOW#"
 	local ZSH_THEME_GIT_PROMPT_RENAMED="${MAGENTA}R"
-	local ZSH_THEME_GIT_PROMPT_UNTRACKED="${CYAN}?"
+	local ZSH_THEME_GIT_PROMPT_UNTRACKED="$CYAN?"
 	local INDEX=$(command git status --porcelain -b 2> /dev/null)
 	local STATUS=""
 
@@ -86,22 +88,22 @@ function git_prompt_status() {
 		STATUS="$ZSH_THEME_GIT_PROMPT_STASHED$STATUS"
 	fi
 
-	echo $STATUS
+	echo "$STATUS"
 }
 
 function precmd {
 	load_colors
 
-	local return_code="${RED}%(?..%? ↵)${NO_COLOR} "
+	local return_code="$RED%(?..%? ↵)$NO_COLOR "
 
 	local fromvim=""
-	if [[ $FROMVIM -eq 1 ]] fromvim="${GREEN}Vim${NO_COLOR} "
+	[[ $FROMVIM -eq 1 ]] && fromvim="${GREEN}Vim$NO_COLOR "
 
 	local gitness=""
 	[[ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = "true" ]] &&
-		gitness="$(git_get_branch)$(git_prompt_status)${NO_COLOR}"
+		gitness="$(git_get_branch)$(git_prompt_status)$NO_COLOR"
 
-	RPROMPT="${return_code}${fromvim}${gitness}"
+	export RPROMPT="$return_code$fromvim$gitness"
 
 	unload_colors
 }

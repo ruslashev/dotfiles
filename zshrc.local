@@ -35,7 +35,7 @@ setopt append_history
 setopt share_history
 setopt inc_append_history
 setopt correct              # Command correction
-setopt no_clobber           # warning if file exists (cat /dev/null > ~/.zshrc)
+setopt clobber              # no warning if file exists (echo asdf > existing_file)
 
 # use the vi navigation keys (hjkl) besides cursor keys in menu completion
 bindkey -M menuselect 'h' vi-backward-char

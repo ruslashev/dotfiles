@@ -53,6 +53,12 @@ alias t='tree'
 alias c='cat'
 alias b='bat'
 
+if [[ ! -z $(uname -a | grep Debian) ]]; then
+    # fucking debian
+    alias bat='batcat'
+    alias fd='fdfind'
+fi
+
 alias fn='find . -name'
 
 alias dirsum='echo -n "$(basename $(pwd)): " && find . -type f -exec cat {} + | md5sum'

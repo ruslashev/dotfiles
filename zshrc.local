@@ -91,6 +91,7 @@ alias gb='git branch'
 alias gbs='git bisect start'
 alias gbb='git bisect bad'
 alias gbg='git bisect good'
+alias gbr='git bisect reset'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%ar) %C(blue)<%an>%Creset' --abbrev-commit --all"
 alias glfull="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%ad) %C(blue)<%an>%Creset' --abbrev-commit --date=format:'%y-%m-%d %H:%M:%S' --all"
 alias glc="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --all"

@@ -103,7 +103,8 @@ onoremap <Tab> <Esc>
 inoremap <Tab> <Esc>`^
 inoremap <S-Tab> <Tab>
 
-nnoremap <C-p> :Files<CR>
+nnoremap <C-p> :GFiles<CR>
+nnoremap <C-i> :Windows<CR>
 
 " Swap j/k and gj/gk
 nnoremap j gj
@@ -153,6 +154,8 @@ nnoremap <Leader>gp :GitGutterPreviewHunk<CR>
 nnoremap <Leader>gs :GitGutterStageHunk<CR>
 nnoremap <Leader>ge :GitGutterEnable<CR>
 nnoremap <Leader>gd :GitGutterDisable<CR>
+
+nnoremap <Leader>rg :Rg<CR>
 
 nnoremap Q @q
 

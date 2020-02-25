@@ -103,8 +103,9 @@ onoremap <Tab> <Esc>
 inoremap <Tab> <Esc>`^
 inoremap <S-Tab> <Tab>
 
-nnoremap <C-p> :GFiles<CR>
-nnoremap <C-i> :Windows<CR>
+nnoremap <C-p> :Files<CR>
+nnoremap <C-w>r :GFiles<CR>
+nnoremap <C-w>w :Windows<CR>
 
 " Swap j/k and gj/gk
 nnoremap j gj

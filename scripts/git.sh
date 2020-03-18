@@ -3,6 +3,7 @@
 set -e
 
 git config --global core.excludesfile ~/dotfiles/host/gitignore
+git config --global rerere.enabled true
 
 binary=$(find -L /usr -name diff-highlight -type f 2> /dev/null | head -n 1)
 

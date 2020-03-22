@@ -3,7 +3,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'dense-analysis/ale'
-Plug 'deoplete-plugins/deoplete-clang'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'junegunn/fzf', { 'dir': '~/bin/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -17,6 +16,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'Shougo/context_filetype.vim'
+Plug 'Shougo/deoplete-clangx'
 Plug 'Shougo/deoplete.nvim'
 Plug 'Shougo/neco-syntax'
 Plug 'Shougo/neoinclude.vim'
@@ -42,8 +42,8 @@ filetype plugin indent on
 let g:python3_host_prog = '/usr/bin/python3.7'
 
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-9/lib/libclang.so'
-let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
+
+call deoplete#custom#var('clangx', 'clang_binary', '/usr/bin/clang')
 
 let g:mapleader = ","
 

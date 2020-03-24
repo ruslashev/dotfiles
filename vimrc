@@ -10,14 +10,13 @@ Plug 'Konfekt/FastFold'
 Plug 'ludovicchabant/vim-gutentags', { 'commit': 'aa67e48f6c071ef4179dc30ac24ddf93e5eb6338' }
 Plug 'majutsushi/tagbar'
 Plug 'mptre/vim-printf'
-Plug 'neovim/python-client', { 'do': 'pip3 install neovim --user' }
 Plug 'petRUShka/vim-opencl'
 Plug 'Raimondi/delimitMate'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'Shougo/context_filetype.vim'
 Plug 'Shougo/deoplete-clangx'
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': 'pip3 install neovim --user' }
 Plug 'Shougo/neco-syntax'
 Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }

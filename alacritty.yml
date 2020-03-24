@@ -517,6 +517,9 @@ mouse_bindings:
   #- { key: N,      mods: Command,            action: SpawnNewInstance }
   #- { key: F,      mods: Command|Control,    action: ToggleFullscreen }
 
+  - { key: Back,     mods: Shift,   action: "\x7f"                           }
+  - { key: Back,     mods: Control, action: "\x7f"                           }
+
   # - { key: Paste,                   action: Paste                            }
   # - { key: Copy,                    action: Copy                             }
   # - { key: L,        mods: Control, action: ClearLogNotice                   }

@@ -478,7 +478,10 @@ mouse_bindings:
 #
 # If the same trigger is assigned to multiple actions, all of them are executed
 # at once.
-# key_bindings:
+key_bindings:
+  - { key: Back,     mods: Shift,   chars: "\x7f"                           }
+  - { key: Back,     mods: Control, chars: "\x7f"                           }
+
   #- { key: Paste,                                action: Paste          }
   #- { key: Copy,                                 action: Copy           }
   #- { key: L,         mods: Control,             action: ClearLogNotice }
@@ -516,9 +519,6 @@ mouse_bindings:
   #- { key: W,      mods: Command,            action: Quit             }
   #- { key: N,      mods: Command,            action: SpawnNewInstance }
   #- { key: F,      mods: Command|Control,    action: ToggleFullscreen }
-
-  - { key: Back,     mods: Shift,   action: "\x7f"                           }
-  - { key: Back,     mods: Control, action: "\x7f"                           }
 
   # - { key: Paste,                   action: Paste                            }
   # - { key: Copy,                    action: Copy                             }

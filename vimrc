@@ -280,6 +280,7 @@ augroup language_specific_overrides
 	au FileType nasm    set commentstring=;\ %s
 	au FileType *       setlocal formatoptions-=o
 	au FileType qf      nnoremap <buffer> <Enter> <C-W><Enter><C-W>T
+	au FileType zsh     set filetype=sh
 augroup END
 
 augroup line_numbers

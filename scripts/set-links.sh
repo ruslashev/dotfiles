@@ -21,6 +21,7 @@ print_error()
 
 declare -a dotfiles=(
 	'ctags'
+	'gdbinit'
 	'gvimrc'
 	'tmux.conf'
 	'vimrc'

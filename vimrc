@@ -124,6 +124,7 @@ vmap <Leader>s "sy:%s/<C-R>"/
 " Search for selected text in directory and open quickfix list
 vmap <Leader>v "sy:grep! <C-R>"<CR>:cw<CR>
 
+" prompt for text to search and show result in quickfix list
 function! BigSearch()
 	let search = input("rg ")
 	execute ":grep! " . search
@@ -154,6 +155,9 @@ nnoremap <Leader>gp :GitGutterPreviewHunk<CR>
 nnoremap <Leader>gs :GitGutterStageHunk<CR>
 nnoremap <Leader>ge :GitGutterEnable<CR>
 nnoremap <Leader>gd :GitGutterDisable<CR>
+
+nnoremap <Leader>ae :ALEEnable<CR>
+nnoremap <Leader>ad :ALEDisable<CR>
 
 nnoremap <Leader>rg :Rg<CR>
 

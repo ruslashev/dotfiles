@@ -45,6 +45,7 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
 alias m='make'
+alias mc='make clean'
 
 alias vim='vim -p'
 alias v='vim'
@@ -107,7 +108,7 @@ alias relf='readelf -W -a'
 alias objd='objdump -D -M intel'
 
 function mdd() {
-	mkdir -p $1 && cd $1
+    mkdir -p $1 && cd $1
 }
 
 alias uniq_cons='awk '\''f!=$0&&f=$0'\'''

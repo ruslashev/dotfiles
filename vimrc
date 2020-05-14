@@ -55,7 +55,8 @@ let g:airline_left_sep = ''
 let g:airline_right_alt_sep = '|'
 let g:airline_right_sep = ''
 let g:airline_theme = 'solarized'
-let g:airline_section_z = '%3p%% %4l/%L:%3v'
+let g:airline_section_z = '%3p%% %l/%L:%v'
+let g:airline_section_b = ''
 
 " Proper HTML autoindentation
 let g:html_indent_inctags = "head,html,body,p,table,tbody,div,script,section"

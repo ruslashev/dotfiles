@@ -9,7 +9,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'Konfekt/FastFold'
 Plug 'ludovicchabant/vim-gutentags', { 'commit': 'aa67e48f6c071ef4179dc30ac24ddf93e5eb6338' }
 Plug 'majutsushi/tagbar'
-Plug 'mptre/vim-printf'
+Plug 'justinmk/vim-printf'
 Plug 'petRUShka/vim-opencl'
 Plug 'Raimondi/delimitMate'
 Plug 'roxma/nvim-yarp'
@@ -277,7 +277,8 @@ augroup language_specific_overrides
 	au Filetype haskell setlocal et sw=4
 	au Filetype erlang  setlocal et sw=4
 	au FileType erlang  let b:printf_pattern = 'io:format("%p~n", [%s]),'
-	au FileType rust    let b:printf_pattern = 'println!("%s", %s);'
+	au FileType rust    let b:printf_pattern = 'println!("%{}", %s);'
+	au FileType python  let b:printf_pattern = 'print("%{}".format(%s))'
 	au FileType c       set commentstring=\/*\ %s\ *\/
 	au FileType cpp     set commentstring=\/\/\ %s
 	au Filetype scheme  setlocal expandtab sw=4 lispwords-=define

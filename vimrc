@@ -46,6 +46,7 @@ call deoplete#custom#var('clangx', 'clang_binary', '/usr/bin/clang')
 
 let g:mapleader = ","
 
+let g:airline#extensions#wordcount#enabled = 0
 let g:airline#extensions#tabline#close_symbol = 'x'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#checks = [ 'trailing' ]

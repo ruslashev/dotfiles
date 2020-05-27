@@ -4,6 +4,7 @@ set -e
 
 git config --global core.excludesfile ~/dotfiles/host/gitignore
 git config --global rerere.enabled true
+git config --global credential.helper 'cache --timeout=36000'
 
 binary=$(find -L /usr -name diff-highlight -type f 2> /dev/null | head -n 1)
 

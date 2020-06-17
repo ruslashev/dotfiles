@@ -119,6 +119,8 @@ eval $(dircolors ~/dotfiles/seebi-dircolors-solarized)
 
 set -o vi
 
+stty -ixon
+
 source ~/dotfiles/prompt.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

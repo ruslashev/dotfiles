@@ -113,6 +113,8 @@ function mdd() {
 
 alias uniq_cons='awk '\''f!=$0&&f=$0'\'''
 
+alias rgs='rg --sort=none'
+
 eval $(dircolors ~/dotfiles/seebi-dircolors-solarized)
 
 set -o vi

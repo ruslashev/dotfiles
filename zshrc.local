@@ -52,7 +52,7 @@ alias v='vim'
 alias vp='vim -'
 
 alias t='tree'
-alias c='cat'
+alias c='cd'
 alias b='bat'
 
 if [[ ! -z $(uname -a | grep Debian) ]]; then

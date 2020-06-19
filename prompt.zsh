@@ -37,13 +37,11 @@ load_colors
 
 prompt off
 
-local user_color="$GREEN"
+user_color="$GREEN"
 [ $UID -eq 0 ] && user_color="$RED"
-local username="$user_color%n$NO_COLOR"
-local dir="$BLUE%1~$NO_COLOR"
-local symbol="$user_color%(!.#.$)$NO_COLOR"
-
-export PROMPT="$username $dir $symbol "
+username="$user_color%n$NO_COLOR"
+dir="$BLUE%1~$NO_COLOR"
+symbol="$user_color%(!.#.$)$NO_COLOR"
 
 function git_get_branch() {
 	git symbolic-ref HEAD 2> /dev/null | sed 's|refs/heads/||'
@@ -91,18 +89,23 @@ function git_prompt_status() {
 	echo "$STATUS"
 }
 
-function precmd {
-	load_colors
-
+function prompt_extras {
 	local gitness=""
 	[[ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = "true" ]] &&
 		gitness="$(git_get_branch)$(git_prompt_status)$NO_COLOR"
 
-	if [[ $gitness == "" ]]; then
-		export RPROMPT="%(?..$RED%? ↵$NO_COLOR)"
+	if [[ "$gitness" == "" ]]; then
+		echo "%(?..($RED%? ↵$NO_COLOR%) )"
 	else
-		export RPROMPT="%(?.$gitness.$RED%? ↵$NO_COLOR $gitness)"
+		echo "%(?.($gitness%).($RED%? ↵$NO_COLOR $gitness%)) "
 	fi
+
+}
+
+function precmd {
+	load_colors
+
+	export PROMPT="$username $dir $(prompt_extras)$symbol "
 
 	unload_colors
 }

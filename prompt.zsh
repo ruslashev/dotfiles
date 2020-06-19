@@ -94,16 +94,15 @@ function git_prompt_status() {
 function precmd {
 	load_colors
 
-	local return_code="$RED%(?..%? ↵)$NO_COLOR "
-
-	local fromvim=""
-	[[ $FROMVIM -eq 1 ]] && fromvim="${GREEN}Vim$NO_COLOR "
-
 	local gitness=""
 	[[ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = "true" ]] &&
 		gitness="$(git_get_branch)$(git_prompt_status)$NO_COLOR"
 
-	export RPROMPT="$return_code$fromvim$gitness"
+	if [[ $gitness == "" ]]; then
+		export RPROMPT="%(?..$RED%? ↵$NO_COLOR)"
+	else
+		export RPROMPT="%(?.$gitness.$RED%? ↵$NO_COLOR $gitness)"
+	fi
 
 	unload_colors
 }

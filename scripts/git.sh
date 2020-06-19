@@ -5,6 +5,7 @@ set -e
 git config --global core.excludesfile ~/dotfiles/host/gitignore
 git config --global rerere.enabled true
 git config --global credential.helper 'cache --timeout=36000'
+git config --global pull.ff only
 
 binary=$(find -L /usr -name diff-highlight -type f 2> /dev/null | head -n 1)
 
@@ -18,11 +19,11 @@ if [[ -z $binary ]]; then
         exit 1
     fi
 
-    dir=$(dirname $script)
+    dir=$(dirname "$script")
 
     echo "found unbuilt diff-highlight at $dir"
 
-    cd $dir
+    cd "$dir"
     sudo make
 
     binary=$(find -L /usr -name diff-highlight -type f 2> /dev/null | head -n 1)
@@ -34,7 +35,7 @@ if [[ -z $binary ]]; then
     echo "built diff-highlight binary at $binary"
 else
     echo "found diff-highlight binary at $binary"
-    sudo chmod +x $binary
+    sudo chmod +x "$binary"
 fi
 
 cat <<HERE >> ~/.gitconfig

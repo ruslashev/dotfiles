@@ -99,7 +99,6 @@ function prompt_extras {
 	else
 		echo "%(?.($gitness%).($RED%? ↵$NO_COLOR $gitness%)) "
 	fi
-
 }
 
 function precmd {

@@ -8,6 +8,7 @@ Plug 'junegunn/fzf', { 'dir': '~/bin/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-printf'
 Plug 'Konfekt/FastFold'
+Plug 'lifepillar/vim-solarized8'
 Plug 'ludovicchabant/vim-gutentags', { 'commit': 'aa67e48f6c071ef4179dc30ac24ddf93e5eb6338' }
 Plug 'majutsushi/tagbar'
 Plug 'petRUShka/vim-opencl'
@@ -261,7 +262,7 @@ set splitright                  " Split new (vertical) windows to the right
 set synmaxcol=200               " stop syntax highlighting past this column
 set tabpagemax=50               " 50 tabs (:tabe, vim -p, ..) max
 set tabstop=8                   " A tab character is displayed as 4 spaces max
-set textwidth=100               " Auto break text exceeding 100 chars
+set termguicolors               " enable use of 24-bit colors in terminals
 set undodir=~/.vim/undo
 set undofile
 set updatetime=100              " used by vim-gitgutter
@@ -320,8 +321,12 @@ au BufRead,BufNewFile *.h   set filetype=c
 if (&t_Co > 8 || has("gui_running")) && !exists("syntax_on")
 	syntax on
 endif
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set background=dark
-colorscheme solarized
+colorscheme solarized8
+" L*A*B 33 -7 -7
+hi SpecialKey guifg=#3C5158 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 call matchadd('ColorColumn', '\%101v', 100)
 
 " commands =====================================================================

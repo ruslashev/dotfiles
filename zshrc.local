@@ -15,7 +15,7 @@ export HISTFILE=~/.zsh-history
 export HISTSIZE=1000000
 export SAVEHIST=$HISTSIZE
 
-export MAKEFLAGS="-j8"
+export MAKEFLAGS="-j$(nproc)"
 export EDITOR="vim"
 
 export MANWIDTH=${MANWIDTH:-80}

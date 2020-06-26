@@ -6,10 +6,10 @@ Plug 'dense-analysis/ale'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'junegunn/fzf', { 'dir': '~/bin/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'justinmk/vim-printf'
 Plug 'Konfekt/FastFold'
 Plug 'ludovicchabant/vim-gutentags', { 'commit': 'aa67e48f6c071ef4179dc30ac24ddf93e5eb6338' }
 Plug 'majutsushi/tagbar'
-Plug 'justinmk/vim-printf'
 Plug 'petRUShka/vim-opencl'
 Plug 'Raimondi/delimitMate'
 Plug 'roxma/nvim-yarp'
@@ -229,7 +229,7 @@ set fillchars=vert:│,fold:─,diff:─ " Pretty window separators
 set foldlevelstart=9            " close folds after level 9 at start
 set foldmethod=syntax
 set foldnestmax=12              " max 12 folds
-set formatoptions+=tqc          " default options for auto wrapping at textwidth
+set formatoptions+=qc           " default options for auto wrapping at textwidth
 set formatoptions-=ro           " don't insert comments on new lines
 set formatoptions+=nj           " dunno lol
 set gdefault                    " g flag by default in substitutions
@@ -282,6 +282,8 @@ augroup language_specific_overrides
 	au FileType rust    let b:printf_pattern = 'println!("%{}", %s);'
 	au FileType python  let b:printf_pattern = 'print("%{}".format(%s))'
 	au FileType c       set commentstring=\/*\ %s\ *\/
+	" au FileType c       set noexpandtab shiftwidth=8
+	au FileType c       set expandtab shiftwidth=4
 	au FileType cpp     set commentstring=\/\/\ %s
 	au Filetype scheme  setlocal expandtab sw=4 lispwords-=define
 	au FileType help    wincmd K

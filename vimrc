@@ -190,7 +190,7 @@ vnoremap <C-b> :<ESC>
               \:setlocal bufhidden=hide<CR>
               \ggdd<CR>
 
-vnoremap <C-g> :<ESC>
+vnoremap <C-g> "*y
               \:tabedit<CR>
               \:tabm -1<CR>
               \:execute("r !git show " . getreg('*'))<CR>

@@ -44,7 +44,11 @@ dir="$BLUE%1~$NO_COLOR"
 symbol="$user_color%(!.#.$)$NO_COLOR"
 
 function git_get_branch() {
-	git symbolic-ref HEAD 2> /dev/null | sed 's|refs/heads/||'
+	if symbolic_ref=$(git symbolic-ref HEAD -q); then
+		echo "$symbolic_ref" | sed 's|refs/heads/||'
+	else
+		git rev-parse --short HEAD
+	fi
 }
 
 function git_prompt_status() {

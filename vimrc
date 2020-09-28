@@ -283,9 +283,9 @@ augroup language_specific_overrides
 	au FileType rust    let b:printf_pattern = 'println!("%{}", %s);'
 	au FileType python  let b:printf_pattern = 'print("%{}".format(%s))'
 	au FileType c       set commentstring=\/*\ %s\ *\/
-	" au FileType c       set noexpandtab shiftwidth=8
-	au FileType c       set expandtab shiftwidth=4
+	au FileType c       set noexpandtab shiftwidth=8
 	au FileType cpp     set commentstring=\/\/\ %s
+	au FileType cpp     set noexpandtab shiftwidth=8
 	au Filetype scheme  setlocal expandtab sw=4 lispwords-=define
 	au FileType help    wincmd K
 	au FileType nasm    set commentstring=;\ %s
@@ -325,8 +325,10 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set background=dark
 colorscheme solarized8
+
 " L*A*B 33 -7 -7
 hi SpecialKey guifg=#3C5158 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+
 call matchadd('ColorColumn', '\%101v', 100)
 
 " commands =====================================================================

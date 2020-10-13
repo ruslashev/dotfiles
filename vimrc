@@ -173,9 +173,8 @@ nnoremap <S-h> gT
 nnoremap go moo<Esc>`o
 nnoremap gO moO<Esc>`o
 
-nmap <C-q> :q<CR>
-
-nnoremap zT :%foldc<CR>
+nnoremap <Leader>fc :%foldc<CR>
+nnoremap <Leader>fo :%foldo<CR>
 
 nnoremap gf <C-w>gF
 

@@ -10,7 +10,6 @@ Plug 'justinmk/vim-printf'
 Plug 'Konfekt/FastFold'
 Plug 'lifepillar/vim-solarized8'
 Plug 'ludovicchabant/vim-gutentags', { 'commit': 'aa67e48f6c071ef4179dc30ac24ddf93e5eb6338' }
-Plug 'majutsushi/tagbar'
 Plug 'petRUShka/vim-opencl'
 Plug 'Raimondi/delimitMate'
 Plug 'roxma/nvim-yarp'
@@ -149,8 +148,6 @@ nmap <Leader>w :w<CR>
 let g:lasttab = 1
 nmap <Leader>l :exe "tabn " . g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
-
-nmap <Leader>t :TagbarToggle<CR>
 
 nmap <Leader>p :Printf<CR>
 

@@ -1,8 +1,5 @@
 #!/bin/bash
 
-rustup override set stable
-rustup update stable
-
 mkdir -p ~/build
 cd ~/build
 rm -rf alacritty

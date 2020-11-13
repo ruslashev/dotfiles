@@ -22,8 +22,8 @@ echo '=== 5/10: git.sh'
 echo '=== 6/10: alacritty.sh'
 ./alacritty.sh
 
-echo '=== 7/10: rustup.sh'
-./rustup.sh
+echo '=== 7/10: rust.sh'
+./rust.sh
 
 echo '=== 8/10: monaco.sh'
 ./monaco.sh

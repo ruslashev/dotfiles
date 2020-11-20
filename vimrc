@@ -69,8 +69,10 @@ let g:html_indent_style1 = "inc"
 let g:ale_sign_error = 'x>'
 let g:ale_sign_warning = '!>'
 let g:ale_linters = {
-      \ 'c': [ 'ccls', 'clang', 'clangd', 'clang-format', 'clangtidy', 'cppcheck', 'cpplint', 'cquery', 'gcc', 'uncrustify' ],
-      \ 'cpp': [ 'clang', 'clangcheck', 'clang-format', 'cppcheck', 'cpplint', 'g++' ]
+      \ 'c': [ 'ccls', 'clang', 'clangd', 'clang-format', 'clangtidy', 'cppcheck', 'cpplint',
+      \ 'cquery', 'gcc', 'uncrustify' ],
+      \ 'cpp': ['ccls', 'clang', 'clangcheck', 'clangd', 'clangtidy', 'clazy', 'cppcheck', 'cpplint',
+      \ 'cquery', 'flawfinder', 'gcc']
       \ }
 let g:ale_lint_delay = 0
 let g:ale_cpp_clangcheck_options = '-std=c++14'

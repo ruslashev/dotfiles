@@ -36,7 +36,8 @@ declare -a old_linux_dotfiles=(
 	'old/zprofile'
 )
 
-while true; do
+# Disabled for less intervention during install
+while false; do
 	read -q "yn?Install old linux dotfiles? "
 	case $yn in
 		[Yy]* ) dotfiles+=($old_linux_dotfiles); break;;

@@ -78,15 +78,17 @@ let g:ale_sign_error = 'x>'
 let g:ale_sign_warning = '!>'
 let g:ale_linters = {
       \ 'c': [ 'ccls', 'clang', 'clangd', 'clang-format', 'clangtidy', 'cppcheck', 'cpplint',
-      \ 'cquery', 'gcc', 'uncrustify' ],
-      \ 'cpp': ['ccls', 'clang', 'clangcheck', 'clangd', 'clangtidy', 'clazy', 'cppcheck', 'cpplint',
-      \ 'cquery', 'flawfinder', 'gcc']
+      \        'cquery', 'gcc', 'uncrustify' ],
+      \ 'cpp': [ 'ccls', 'clang', 'clangcheck', 'clangd', 'clangtidy', 'clazy', 'cppcheck', 'cpplint',
+      \          'cquery', 'flawfinder', 'gcc' ],
+      \ 'rust': [ 'cargo', 'analyzer' ],
       \ }
 let g:ale_lint_delay = 0
-let g:ale_cpp_clangcheck_options = '-std=c++14'
 let g:ale_c_clang_options = ''
 let g:ale_c_gcc_options = ''
+let g:ale_cpp_clangcheck_options = '-std=c++14'
 let g:ale_nasm_nasm_options = '-f elf64'
+let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 let g:ale_completition_enabled = 1
 
 let g:netrw_liststyle = 3

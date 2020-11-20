@@ -8,6 +8,7 @@ Plug 'junegunn/fzf', { 'dir': '~/bin/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Konfekt/FastFold'
 Plug 'ludovicchabant/vim-gutentags', { 'commit': 'aa67e48f6c071ef4179dc30ac24ddf93e5eb6338' }
+Plug 'natebosch/vim-lsc'
 Plug 'Raimondi/delimitMate'
 
 " New actions and movements
@@ -67,6 +68,37 @@ let g:airline_right_sep = ''
 let g:airline_theme = 'solarized'
 let g:airline_section_z = '%3p%% %l/%L:%v'
 let g:airline_section_b = ''
+
+let g:lsc_server_commands = {
+            \  'c': {
+            \    'command': 'clangd',
+            \    'log_level': -1,
+            \    'suppress_stderr': v:true,
+            \  },
+            \  'cpp': {
+            \    'command': 'clangd',
+            \    'log_level': -1,
+            \    'suppress_stderr': v:true,
+            \  },
+            \  'rust': {
+            \    'command': 'rust-analyzer',
+            \  },
+            \}
+let g:lsc_auto_map = {
+            \  'GoToDefinition': '<C-]>',
+            \  'GoToDefinitionSplit': [ '<C-W>]', '<C-W><C-]>' ],
+            \  'FindReferences': 'gr',
+            \  'NextReference': '<C-n>',
+            \  'PreviousReference': '<C-p>',
+            \  'FindImplementations': 'gI',
+            \  'FindCodeActions': 'ga',
+            \  'Rename': 'gR',
+            \  'ShowHover': v:true,
+            \  'DocumentSymbol': 'go',
+            \  'WorkspaceSymbol': 'gS',
+            \  'SignatureHelp': 'gm',
+            \  'Completion': 'completefunc',
+            \}
 
 " Proper HTML autoindentation
 let g:html_indent_inctags = "head,html,body,p,table,tbody,div,script,section"

@@ -142,7 +142,11 @@ nmap <Leader>m :!make<CR>
 nmap <Leader>u :MundoToggle<CR>
 
 " Open C++ header in vsplit in every tab
-nmap <Leader>h :tabdo if filereadable(expand("%:r") . ".hpp") \| vs `=expand("%:r") . ".hpp"` \| endif<CR>:tabdo if filereadable(expand("%:r") . ".hh") \| vs `=expand("%:r") . ".hh"` \| endif<CR>:tabdo if filereadable(expand("%:r") . ".h") \| vs `=expand("%:r") . ".h"` \| endif<CR>:silent tabfirst<CR>
+nmap <Leader>h
+            \:tabdo if filereadable(expand("%:r") . ".hpp") \| vs `=expand("%:r") . ".hpp"` \| endif<CR>
+            \:tabdo if filereadable(expand("%:r") . ".hh") \| vs `=expand("%:r") . ".hh"` \| endif<CR>
+            \:tabdo if filereadable(expand("%:r") . ".h") \| vs `=expand("%:r") . ".h"` \| endif<CR>
+            \:silent tabfirst<CR>
 
 nmap <Leader>w :w<CR>
 

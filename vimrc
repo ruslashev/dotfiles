@@ -6,12 +6,32 @@ Plug 'dense-analysis/ale'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'junegunn/fzf', { 'dir': '~/bin/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'justinmk/vim-printf'
 Plug 'Konfekt/FastFold'
-Plug 'lifepillar/vim-solarized8'
 Plug 'ludovicchabant/vim-gutentags', { 'commit': 'aa67e48f6c071ef4179dc30ac24ddf93e5eb6338' }
-Plug 'petRUShka/vim-opencl'
 Plug 'Raimondi/delimitMate'
+
+" New actions and movements
+Plug 'justinmk/vim-printf'
+Plug 'simnalamburt/vim-mundo'
+Plug 'tommcdo/vim-lion'
+Plug 'tpope/tpope-vim-abolish'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+
+" Appearance
+Plug 'lifepillar/vim-solarized8'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes', { 'commit': 'b85165844240fe0b9121df487679a320e053abc7' }
+
+" Syntax and language-specific
+Plug 'petRUShka/vim-opencl'
+Plug 'tikhomirov/vim-glsl'
+Plug 'travitch/hasksyn', { 'for': 'haskell' }
+Plug 'vim-erlang/vim-erlang-runtime', { 'for': 'erlang' }
+
+" Autocomplete
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'Shougo/context_filetype.vim'
@@ -20,18 +40,6 @@ Plug 'Shougo/deoplete.nvim', { 'do': 'pip3 install neovim --user' }
 Plug 'Shougo/neco-syntax'
 Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'simnalamburt/vim-mundo'
-Plug 'tikhomirov/vim-glsl'
-Plug 'tommcdo/vim-lion'
-Plug 'tpope/tpope-vim-abolish'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'travitch/hasksyn', { 'for': 'haskell' }
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes', { 'commit': 'b85165844240fe0b9121df487679a320e053abc7' }
-Plug 'vim-erlang/vim-erlang-runtime', { 'for': 'erlang' }
 
 call plug#end()
 
@@ -41,8 +49,8 @@ filetype plugin indent on
 let g:python3_host_prog = '/usr/bin/python3'
 
 let g:deoplete#enable_at_startup = 1
-
 call deoplete#custom#var('clangx', 'clang_binary', '/usr/bin/clang')
+let g:acp_enableAtStartup = 0
 
 let g:mapleader = ","
 
@@ -80,8 +88,6 @@ let g:ale_c_clang_options = ''
 let g:ale_c_gcc_options = ''
 let g:ale_nasm_nasm_options = '-f elf64'
 let g:ale_completition_enabled = 1
-
-let g:acp_enableAtStartup = 0
 
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0

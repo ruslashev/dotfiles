@@ -8,6 +8,8 @@ git clone https://github.com/jwilm/alacritty.git
 cd alacritty
 # git checkout -b good 52fecd7
 
+export PATH=$PATH:~/.cargo/bin
+
 cargo build --release
 
 sudo cp target/release/alacritty /usr/local/bin

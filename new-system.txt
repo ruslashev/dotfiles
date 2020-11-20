@@ -1,0 +1,9 @@
+1. su
+2. sudo usermod -aG sudo username
+3. sudo visudo
+   amend last string to say %sudo ALL=(ALL:ALL) NOPASSWD: ALL
+4. reboot
+5. sudo apt install git
+6. git clone https://github.com/ruslashev/dotfiles
+7. ./scripts/new-system.sh
+8. reboot

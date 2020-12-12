@@ -141,3 +141,5 @@ source ~/dotfiles/prompt.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+bindkey '^P' fzf-file-widget
+

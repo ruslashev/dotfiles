@@ -88,8 +88,8 @@ let g:lsc_auto_map = {
             \  'GoToDefinition': '<C-]>',
             \  'GoToDefinitionSplit': [ '<C-W>]', '<C-W><C-]>' ],
             \  'FindReferences': 'gr',
-            \  'NextReference': '<C-n>',
-            \  'PreviousReference': '<C-p>',
+            \  'NextReference': 'gn',
+            \  'PreviousReference': 'gp',
             \  'FindImplementations': 'gI',
             \  'FindCodeActions': 'ga',
             \  'Rename': 'gR',
@@ -121,7 +121,6 @@ let g:ale_c_gcc_options = ''
 let g:ale_cpp_clangcheck_options = '-std=c++14'
 let g:ale_nasm_nasm_options = '-f elf64'
 let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
-let g:ale_completition_enabled = 1
 
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0

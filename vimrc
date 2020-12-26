@@ -55,10 +55,18 @@ let g:acp_enableAtStartup = 0
 
 let g:mapleader = ","
 
-let g:airline#extensions#wordcount#enabled = 0
-let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#show_tab_count = 2
 let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
+let g:airline#extensions#tabline#show_close_button = 0
+
+let g:airline#extensions#wordcount#enabled = 0
 let g:airline#extensions#whitespace#checks = [ 'trailing' ]
 let g:airline#extensions#ale#enabled = 1
 let g:airline_left_alt_sep = '|'

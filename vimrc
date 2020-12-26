@@ -75,8 +75,30 @@ let g:airline_right_alt_sep = '|'
 let g:airline_right_sep = ''
 let g:airline_theme = 'solarized'
 let g:airline_section_z = '%3p%% %l/%L:%v'
-let g:airline_section_y = ''
+let g:airline_section_y = '%{LastSearchCount()}'
 let g:airline_section_b = ''
+
+let g:airline#extensions#searchcount#enabled = 0
+function! LastSearchCount() abort
+  try
+    let result = searchcount(#{recompute: 1, maxcount: -1})
+    if empty(result) || result.total ==# 0
+      return ''
+    endif
+    if result.incomplete ==# 1     " timed out
+      return printf('%s [?/??]', @/)
+    elseif result.incomplete ==# 2 " max count exceeded
+      if result.total > result.maxcount && result.current > result.maxcount
+        return printf('%s [>%d/>%d]', @/, result.current, result.total)
+      elseif result.total > result.maxcount
+        return printf('%s [%d/>%d]', @/, result.current, result.total)
+      endif
+    endif
+    return printf('%s [%d/%d]', @/, result.current, result.total)
+  catch
+    return ''
+  endtry
+endfunction
 
 let g:lsc_server_commands = {
             \  'c': {
@@ -376,6 +398,7 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set background=dark
 colorscheme solarized8
 
+" for listchars
 " L*A*B 33 -7 -7
 hi SpecialKey guifg=#3C5158 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 

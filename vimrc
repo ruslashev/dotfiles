@@ -161,6 +161,12 @@ let g:netrw_winsize = 25
 let g:lion_squeeze_spaces = 1
 
 let g:fzf_layout = { 'up': '~33%' }
+let debian = system('uname -a | grep -q Debian')
+if v:shell_error == 0
+    let $FZF_DEFAULT_COMMAND='fdfind --type f'
+else
+    let $FZF_DEFAULT_COMMAND='fd --type f'
+endif
 
 let g:mkdp_page_title = '${name}'
 

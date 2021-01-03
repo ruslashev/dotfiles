@@ -14,6 +14,7 @@ Plug 'Raimondi/delimitMate'
 " New actions and movements
 Plug 'justinmk/vim-printf'
 Plug 'simnalamburt/vim-mundo'
+Plug 'tommcdo/vim-exchange'
 Plug 'tommcdo/vim-lion'
 Plug 'tpope/tpope-vim-abolish'
 Plug 'tpope/vim-commentary'
@@ -293,6 +294,7 @@ set autoindent
 set autoread
 set autowrite                   " Auto write on :make, :shell and others
 set backspace=2                 " Allow backspacing everywhere
+set breakindent                 " for wrapping, continue at indent instead of start of line
 set cindent                     " C-style autoindenting
 set cinoptions=g0               " Align public:, private: etc in C++ to column 1
 set cinoptions+=ls              " switch case labels indentation
@@ -319,6 +321,7 @@ set ignorecase                  " Ignore case when searching
 set incsearch                   " Incremental search: search-as-type
 set laststatus=2                " Always show status bar
 set lazyredraw                  " Don't redraw while executing macros
+set linebreak                   " Wrap lines at convenient points instead of last screen character
 set list listchars=tab:\|─,trail:·,nbsp:↔ " Display nonprintable characters
 set matchtime=3                 " Time to show matching bracket
 set mouse=a                     " enable mouse

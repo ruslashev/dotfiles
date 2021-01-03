@@ -300,7 +300,6 @@ set cinoptions+=:0              " also switch case labels indentation
 set cinoptions+=N-s             " don't indent in namespaces
 set colorcolumn=100
 set completeopt-=preview        " Don't show autocompletition window on top
-set cursorline                  " Highlight line with cursor
 set encoding=utf-8              " Default encoding
 set expandtab                   " use spaces instead of tabs everywhere
 set fileformats="unix,dos,mac"  " Line ending priority
@@ -387,6 +386,13 @@ augroup END
 augroup auto_resize_splits
 	au TabEnter   * wincmd =
 	au VimResized * wincmd =
+augroup END
+
+set cursorline " highlight line with cursor
+augroup CursorLine
+	au!
+	au WinEnter * setlocal cursorline
+	au WinLeave * setlocal nocursorline
 augroup END
 
 au BufWritePost * GitGutter

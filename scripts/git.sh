@@ -6,6 +6,7 @@ git config --global core.excludesfile ~/dotfiles/host/gitignore
 git config --global rerere.enabled true
 git config --global credential.helper 'cache --timeout=36000'
 git config --global pull.ff only
+git config --global init.defaultBranch master
 
 binary=$(find -L /usr -name diff-highlight -type f 2> /dev/null | head -n 1)
 

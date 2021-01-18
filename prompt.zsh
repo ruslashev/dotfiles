@@ -92,14 +92,15 @@ function git_prompt_status() {
 }
 
 function prompt_extras {
+	local retval="$RED%? ↵$NO_COLOR"
 	local gitness=""
 	[[ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = "true" ]] &&
 		gitness="$(git_get_branch)$(git_prompt_status)$NO_COLOR"
 
 	if [[ "$gitness" == "" ]]; then
-		echo "%(?..($RED%? ↵$NO_COLOR%) )"
+		echo "%(?~~($retval%) )"
 	else
-		echo "%(?.($gitness%).($RED%? ↵$NO_COLOR $gitness%)) "
+		echo "%(?~($gitness%)~($retval $gitness%)) "
 	fi
 }
 

@@ -10,6 +10,7 @@ Plug 'Konfekt/FastFold'
 Plug 'ludovicchabant/vim-gutentags', { 'commit': 'aa67e48f6c071ef4179dc30ac24ddf93e5eb6338' }
 Plug 'natebosch/vim-lsc'
 Plug 'Raimondi/delimitMate'
+Plug 'romainl/vim-cool'
 
 " New actions and movements
 Plug 'justinmk/vim-printf'
@@ -305,7 +306,7 @@ set completeopt-=preview        " Don't show autocompletition window on top
 set encoding=utf-8              " Default encoding
 set expandtab                   " use spaces instead of tabs everywhere
 set fileformats="unix,dos,mac"  " Line ending priority
-set fillchars=vert:│,fold:─,diff:─ " Pretty window separators
+set fillchars=vert:│,fold:\ ,diff:─ " Pretty window separators
 set foldlevelstart=9            " close folds after level 9 at start
 set foldmethod=syntax
 set foldnestmax=12              " max 12 folds
@@ -317,6 +318,7 @@ set grepprg=rg\ --vimgrep\ -g\ \!tags
 set grepformat=%f:%l:%c:%m
 set history=1000                " :command history
 set hidden
+set hls
 set ignorecase                  " Ignore case when searching
 set incsearch                   " Incremental search: search-as-type
 set laststatus=2                " Always show status bar
@@ -358,6 +360,7 @@ augroup language_specific_overrides
 	au!
 	au Filetype ruby    setlocal et sw=2
 	au Filetype haskell setlocal et sw=4
+	au Filetype opencl  setlocal noet ts=8 sw=8
 	au Filetype erlang  setlocal et sw=4
 	au FileType erlang  let b:printf_pattern = 'io:format("%p~n", [%s]),'
 	au FileType rust    let b:printf_pattern = 'println!("%{}", %s);'
@@ -400,9 +403,11 @@ augroup END
 
 au BufWritePost * GitGutter
 
-au BufRead,BufNewFile *.s   set filetype=nasm
-au BufRead,BufNewFile *.asm set filetype=nasm
-au BufRead,BufNewFile *.h   set filetype=c
+au BufRead,BufNewFile *.s           set filetype=nasm
+au BufRead,BufNewFile *.asm         set filetype=nasm
+au BufRead,BufNewFile *.h           set filetype=c
+au BufRead,BufNewFile SConscript    set filetype=python
+au BufRead,BufNewFile SConscriptDef set filetype=python
 
 " cosmetic =====================================================================
 if (&t_Co > 8 || has("gui_running")) && !exists("syntax_on")
@@ -413,6 +418,7 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set background=dark
 colorscheme solarized8
 
+hi Folded guifg=#586e75 guibg=#002b36 guisp=#002b36
 " for listchars
 " L*A*B 33 -7 -7
 hi SpecialKey guifg=#3C5158 guibg=NONE guisp=NONE gui=NONE cterm=NONE

@@ -210,7 +210,7 @@ vmap <Leader>v "sy:grep! <C-R>"<CR>:cw<CR>
 " prompt for text to search and show result in quickfix list
 function! BigSearch()
 	let search = input("rg ")
-	execute ":grep! " . search
+	execute ":grep! '" . search . "'"
 	cw
 endfunction
 nmap <Leader>b :call BigSearch()<CR>

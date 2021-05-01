@@ -3,7 +3,7 @@
 
 # export TERM="rxvt-unicode-256color"
 
-[ -f ~/dotfiles/host/$HOST.zsh ] && source ~/dotfiles/host/$HOST.zsh
+[ -f ~/dotfiles/host/host.zsh ] && source ~/dotfiles/host/host.zsh
 
 export PATH=$PATH:~/bin
 export PATH=$PATH:~/bin/bin
@@ -134,6 +134,7 @@ function git-numerical-commit() {
 alias uniq_cons='awk '\''f!=$0&&f=$0'\'''
 
 alias rgs='rg --sort=none'
+alias rgi='rg --no-ignore'
 
 eval $(dircolors ~/dotfiles/seebi-dircolors-solarized)
 

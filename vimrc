@@ -67,10 +67,10 @@ let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#tabline#right_alt_sep = ''
 let g:airline#extensions#tabline#show_close_button = 0
-
 let g:airline#extensions#wordcount#enabled = 0
 let g:airline#extensions#whitespace#checks = [ 'trailing' ]
 let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#scrollbar#enabled = 0
 let g:airline_left_alt_sep = '|'
 let g:airline_left_sep = ''
 let g:airline_right_alt_sep = '|'
@@ -339,6 +339,7 @@ set shiftwidth=4                " An indent is 4 spaces
 set showcmd                     " Show command being typed
 set showmatch                   " Show matching bracket
 set sidescrolloff=5             " How many lines to keep visible when scrolling
+set signcolumn=number           " show signs (git, linters) in place of numbers
 set smartcase                   " Ignore case
 set splitright                  " Split new (vertical) windows to the right
 set synmaxcol=200               " stop syntax highlighting past this column
@@ -422,6 +423,8 @@ hi Folded guifg=#586e75 guibg=#002b36 guisp=#002b36
 " for listchars
 " L*A*B 33 -7 -7
 hi SpecialKey guifg=#3C5158 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+
+hi! link SignColumn LineNr
 
 call matchadd('ColorColumn', '\%101v', 100)
 

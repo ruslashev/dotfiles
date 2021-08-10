@@ -349,6 +349,8 @@ augroup language_specific_overrides
 	au FileType *       setlocal formatoptions-=o
 	au FileType qf      nnoremap <buffer> <Enter> <C-W><Enter><C-W>T
 	au FileType zsh     set filetype=sh
+	au FileType gitcommit set colorcolumn=72
+	au FileType gitcommit set spell
 augroup END
 
 augroup line_numbers

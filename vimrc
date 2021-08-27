@@ -396,8 +396,8 @@ colorscheme solarized8
 
 hi Folded guifg=#586e75 guibg=#002b36 guisp=#002b36
 " for listchars
-" L*A*B 33 -7 -7
-hi SpecialKey guifg=#3C5158 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+" L*A*B 26 -7 -7
+hi SpecialKey guifg=#2C4148 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 
 hi! link SignColumn LineNr
 

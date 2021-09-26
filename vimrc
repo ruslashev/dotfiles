@@ -75,7 +75,7 @@ let g:airline_left_sep = ''
 let g:airline_right_alt_sep = '|'
 let g:airline_right_sep = ''
 let g:airline_theme = 'solarized'
-let g:airline_section_z = '%3p%% %l/%L:%v'
+let g:airline_section_z = '%l/%L:%v'
 let g:airline_section_y = '%{LastSearchCount()}'
 let g:airline_section_b = ''
 

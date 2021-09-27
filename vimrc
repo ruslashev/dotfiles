@@ -28,6 +28,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes', { 'commit': 'b85165844240fe0b9121df487679a320e053abc7' }
 
 " Syntax and language-specific
+Plug 'cespare/vim-toml', { 'branch': 'main' }
 Plug 'petRUShka/vim-opencl'
 Plug 'tikhomirov/vim-glsl'
 Plug 'travitch/hasksyn', { 'for': 'haskell' }
@@ -312,7 +313,6 @@ set shiftwidth=4                " An indent is 4 spaces
 set showcmd                     " Show command being typed
 set showmatch                   " Show matching bracket
 set sidescrolloff=5             " How many lines to keep visible when scrolling
-set signcolumn=number           " show signs (git, linters) in place of numbers
 set smartcase                   " Ignore case
 set splitright                  " Split new (vertical) windows to the right
 set synmaxcol=200               " stop syntax highlighting past this column

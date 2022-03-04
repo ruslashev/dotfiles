@@ -16,7 +16,7 @@ Plug 'justinmk/vim-printf'
 Plug 'simnalamburt/vim-mundo'
 Plug 'tommcdo/vim-exchange'
 Plug 'tommcdo/vim-lion'
-Plug 'tpope/tpope-vim-abolish'
+Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-repeat'
@@ -30,6 +30,7 @@ Plug 'vim-airline/vim-airline-themes', { 'commit': 'b85165844240fe0b9121df487679
 " Syntax and language-specific
 Plug 'cespare/vim-toml', { 'branch': 'main' }
 Plug 'petRUShka/vim-opencl'
+Plug 'rust-lang/rust.vim'
 Plug 'tikhomirov/vim-glsl'
 Plug 'travitch/hasksyn', { 'for': 'haskell' }
 Plug 'vim-erlang/vim-erlang-runtime', { 'for': 'erlang' }
@@ -401,7 +402,7 @@ hi SpecialKey guifg=#2C4148 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 
 hi! link SignColumn LineNr
 
-call matchadd('ColorColumn', '\%101v', 100)
+" call matchadd('ColorColumn', '\%101v', 100)
 
 " commands =====================================================================
 command! W w !sudo tee % > /dev/null

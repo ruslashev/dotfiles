@@ -52,7 +52,6 @@ alias v='vim'
 alias vp='vim -'
 
 alias t='tree'
-alias c='cd'
 alias b='bat'
 
 if uname -a | grep -q Debian; then
@@ -105,15 +104,13 @@ alias gldate="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset
 alias glc="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --all"
 alias gldatec="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cd) %C(blue)<%an>%Creset' --abbrev-commit --date=format:'%y-%m-%d %H:%M:%S' --all"
 
-alias tmrs='tmux rename-session'
 alias tmat='tmux attach -t'
-alias tmd='tmux detach'
 
 alias relf='readelf -W -a'
 alias objd='objdump -D -M intel'
 
 function mdd() {
-    mkdir -p $1 && cd $1
+    mkdir -p "$1" && cd "$1"
 }
 
 function git-numerical-commit() {

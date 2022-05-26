@@ -2,7 +2,6 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
-Plug 'dense-analysis/ale'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'junegunn/fzf', { 'dir': '~/bin/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -35,15 +34,8 @@ Plug 'tikhomirov/vim-glsl'
 Plug 'travitch/hasksyn', { 'for': 'haskell' }
 Plug 'vim-erlang/vim-erlang-runtime', { 'for': 'erlang' }
 
-" Autocomplete
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'Shougo/context_filetype.vim'
-Plug 'Shougo/deoplete-clangx'
-Plug 'Shougo/deoplete.nvim', { 'do': 'pip3 install neovim --user' }
-Plug 'Shougo/neco-syntax'
-Plug 'Shougo/neoinclude.vim'
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+" Autocomplete, LSP
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 call plug#end()
 
@@ -51,10 +43,6 @@ filetype plugin indent on
 
 " lets =========================================================================
 let g:python3_host_prog = '/usr/bin/python3'
-
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#var('clangx', 'clang_binary', '/usr/bin/clang')
-let g:acp_enableAtStartup = 0
 
 let g:mapleader = ","
 
@@ -108,22 +96,6 @@ let g:html_indent_inctags = "head,html,body,p,table,tbody,div,script,section"
 let g:html_indent_inctags += ",h1,h2,h3,li"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
-
-let g:ale_sign_error = 'x>'
-let g:ale_sign_warning = '!>'
-let g:ale_linters = {
-      \ 'c': [ 'ccls', 'clang', 'clangd', 'clang-format', 'clangtidy', 'cppcheck', 'cpplint',
-      \        'cquery', 'gcc', 'uncrustify' ],
-      \ 'cpp': [ 'ccls', 'clang', 'clangcheck', 'clangd', 'clangtidy', 'clazy', 'cppcheck', 'cpplint',
-      \          'cquery', 'flawfinder', 'gcc' ],
-      \ 'rust': [ 'cargo', 'analyzer' ],
-      \ }
-let g:ale_lint_delay = 0
-let g:ale_c_clang_options = ''
-let g:ale_c_gcc_options = ''
-let g:ale_cpp_clangcheck_options = '-std=c++14'
-let g:ale_nasm_nasm_options = '-f elf64'
-let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
@@ -211,13 +183,25 @@ nnoremap <Leader>gs :GitGutterStageHunk<CR>
 nnoremap <Leader>ge :GitGutterEnable<CR>
 nnoremap <Leader>gd :GitGutterDisable<CR>
 
-nnoremap <Leader>ae :ALEEnable<CR>
-nnoremap <Leader>ad :ALEDisable<CR>
-nnoremap <Leader>a] :ALEGoToDefinition<CR>
-nnoremap <Leader>ar :ALEFindReferences<CR>
-nnoremap <Leader>ak :ALEHover<CR>
-nnoremap <Leader>as :ALESymbolSearch<CR>
-nnoremap <Leader>aR :ALERename<CR>
+nmap <silent> [a <Plug>(coc-diagnostic-prev)
+nmap <silent> ]a <Plug>(coc-diagnostic-next)
+
+nmap <silent> <Leader>a] <Plug>(coc-definition)
+nmap <silent> <Leader>at <Plug>(coc-type-definition)
+nmap <silent> <Leader>ai <Plug>(coc-implementation)
+nmap <silent> <Leader>ar <Plug>(coc-references)
+nmap <silent> <Leader>an <Plug>(coc-rename)
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+xmap <Leader>a <Plug>(coc-codeaction-selected)
+nmap <Leader>a <Plug>(coc-codeaction-selected)
+
+nmap <silent> <Leader>ac <Plug>(coc-codeaction-cursor)
+
+nmap <Leader>qf <Plug>(coc-fix-current)
+
+nmap <leader>cl <Plug>(coc-codelens-action)
 
 nnoremap <Leader>rg :Rg<CR>
 
@@ -261,9 +245,6 @@ nnoremap <Up> <C-y>
 nnoremap <Down> <C-e>
 
 vnoremap gi g<C-a>
-
-nnoremap [a :ALEPrevious<CR>
-nnoremap ]a :ALENext<CR>
 
 " sets =========================================================================
 set autoindent
@@ -339,6 +320,7 @@ augroup language_specific_overrides
 	au Filetype erlang  setlocal et sw=4
 	au FileType erlang  let b:printf_pattern = 'io:format("%p~n", [%s]),'
 	au FileType rust    let b:printf_pattern = 'println!("%{}", %s);'
+	au FileType rust    set foldlevelstart=14 foldnestmax=18
 	au FileType python  let b:printf_pattern = 'print("%{}".format(%s))'
 	au FileType c       set commentstring=\/*\ %s\ *\/
 	au FileType c       set noexpandtab shiftwidth=8
@@ -375,7 +357,11 @@ set cursorline " highlight line with cursor
 augroup CursorLine
 	au!
 	au WinEnter * setlocal cursorline
+	au TabEnter * setlocal cursorline
+	au BufEnter * setlocal cursorline
 	au WinLeave * setlocal nocursorline
+	au TabLeave * setlocal nocursorline
+	au BufLeave * setlocal nocursorline
 augroup END
 
 au BufWritePost * GitGutter

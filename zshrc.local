@@ -129,6 +129,21 @@ function git-numerical-commit() {
     done
 }
 
+function git-proof-of-work() {
+    for (( attempts=1; ; attempts++ )); do
+        output=$(git commit --amend --no-edit)
+        echo "$output"
+        hash=$(echo "$output" | ruby -e "p ARGF.read.match?(/\[.+? ([0-9a-f])\1{1,}.+?\]/)")
+
+        if [ "$hash" = "true" ]; then
+            echo "done in $attempts attempts"
+            break
+        fi
+
+        sleep 1
+    done
+}
+
 alias uniq_cons='awk '\''f!=$0&&f=$0'\'''
 
 alias rgs='rg --sort=none'

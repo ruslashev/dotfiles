@@ -400,3 +400,5 @@ command! StripTrailingWhitespace %s/\s\+$//
 
 command! ChmodX !chmod 755 %
 
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)

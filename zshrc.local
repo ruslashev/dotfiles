@@ -110,6 +110,12 @@ alias tmat='tmux attach -t'
 alias relf='readelf -W -a'
 alias objd='objdump -D -M intel'
 
+alias cr='cargo r'
+alias crr='cargo r --release'
+alias cb='cargo b'
+alias cbr='cargo b --release'
+alias ccl='cargo clean'
+
 function mdd() {
     mkdir -p "$1" && cd "$1"
 }

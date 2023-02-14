@@ -25,6 +25,7 @@ Plug 'tpope/vim-surround'
 Plug 'lifepillar/vim-solarized8'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes', { 'commit': 'b85165844240fe0b9121df487679a320e053abc7' }
+Plug 'glepnir/oceanic-material'
 
 " Syntax and language-specific
 Plug 'cespare/vim-toml', { 'branch': 'main' }
@@ -115,6 +116,8 @@ let g:mkdp_page_title = '${name}'
 
 let g:gutentags_ctags_tagfile = '.git/tags'
 
+let g:coc_start_at_startup = 0
+
 " Variable passed to shell for it to know it was opened with :shell
 let $FROMVIM=1
 
@@ -157,6 +160,7 @@ endfunction
 nmap <Leader>b :call BigSearch()<CR>
 
 nmap <Leader>m :!make<CR>
+nmap <Leader>r :!cargo run<CR>
 
 nmap <Leader>u :MundoToggle<CR>
 
@@ -255,21 +259,20 @@ set backspace=2                 " Allow backspacing everywhere
 set breakindent                 " for wrapping, continue at indent instead of start of line
 set cindent                     " C-style autoindenting
 set cinoptions=g0               " Align public:, private: etc in C++ to column 1
-set cinoptions+=ls              " switch case labels indentation
-set cinoptions+=:0              " also switch case labels indentation
+set cinoptions+=ls:0            " switch case labels indentation
 set cinoptions+=N-s             " don't indent in namespaces
 set colorcolumn=100
 set completeopt-=preview        " Don't show autocompletition window on top
 set encoding=utf-8              " Default encoding
 set expandtab                   " use spaces instead of tabs everywhere
 set fileformats="unix,dos,mac"  " Line ending priority
-set fillchars=vert:│,fold:\ ,diff:─ " Pretty window separators
-set foldlevelstart=9            " close folds after level 9 at start
+set fillchars=vert:│,fold:\ ,diff:─ " Pretty window separators and folds
+set foldlevelstart=14            " close folds after level 9 at start
 set foldmethod=syntax
-set foldnestmax=12              " max 12 folds
+set foldnestmax=15              " max 12 folds
 set formatoptions+=qc           " default options for auto wrapping at textwidth
 set formatoptions-=ro           " don't insert comments on new lines
-set formatoptions+=nj           " dunno lol
+set formatoptions+=nj           " recognize numbered lists, remove leader when joining lines
 set gdefault                    " g flag by default in substitutions
 set grepprg=rg\ --vimgrep\ -g\ \!tags
 set grepformat=%f:%l:%c:%m
@@ -292,7 +295,7 @@ set number                      " Show line numbers
 set numberwidth=3               " Number column width
 set omnifunc=syntaxcomplete#Complete
 set scrolloff=3                 " How many lines to keep visible when scrolling
-set shiftwidth=4                " An indent is 4 spaces
+set shiftwidth=0                " Use 'tabstop' size for # of spaces for autoindent
 set showcmd                     " Show command being typed
 set showmatch                   " Show matching bracket
 set sidescrolloff=5             " How many lines to keep visible when scrolling
@@ -300,7 +303,7 @@ set smartcase                   " Ignore case
 set splitright                  " Split new (vertical) windows to the right
 set synmaxcol=200               " stop syntax highlighting past this column
 set tabpagemax=50               " 50 tabs (:tabe, vim -p, ..) max
-set tabstop=8                   " A tab character is displayed as 4 spaces max
+set tabstop=4                   " A tab character is displayed as 4 spaces max
 set termguicolors               " enable use of 24-bit colors in terminals
 set undodir=~/.vim/undo
 set undofile
@@ -317,16 +320,18 @@ augroup language_specific_overrides
 	au!
 	au Filetype ruby    setlocal et sw=2
 	au Filetype haskell setlocal et sw=4
-	au Filetype opencl  setlocal noet ts=8 sw=8
+	au Filetype opencl  setlocal noet ts=8 sw=0
 	au Filetype erlang  setlocal et sw=4
 	au FileType erlang  let b:printf_pattern = 'io:format("%p~n", [%s]),'
 	au FileType rust    let b:printf_pattern = 'println!("%{}", %s);'
 	au FileType rust    set foldlevelstart=14 foldnestmax=18
 	au FileType python  let b:printf_pattern = 'print("%{}".format(%s))'
 	au FileType c       set commentstring=\/*\ %s\ *\/
-	au FileType c       set noexpandtab shiftwidth=8
+	au FileType c       set noet ts=8 sw=0
 	au FileType cpp     set commentstring=\/\/\ %s
-	au FileType cpp     set noexpandtab shiftwidth=8
+	" au FileType cpp     set noet ts=8 sw=0
+	au FileType cpp     set noet ts=4
+	au FileType glsl    set commentstring=\/\/\ %s
 	au Filetype scheme  setlocal expandtab sw=4 lispwords-=define
 	au FileType help    wincmd K
 	au FileType nasm    set commentstring=;\ %s

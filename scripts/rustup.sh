@@ -6,3 +6,5 @@ fi
 
 export PATH=$PATH:~/.cargo/bin
 
+rustup component add clippy rust-src
+

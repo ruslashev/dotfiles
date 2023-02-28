@@ -19,11 +19,11 @@ echo '=== 4/9: git.sh'
 echo '=== 5/9: alacritty.sh'
 ./alacritty.sh
 
-echo '=== 6/9: rust.sh'
-./rust.sh
+echo '=== 6/9: fontconfig.sh'
+./fontconfig.sh
 
-echo '=== 7/9: rust-update.sh'
-./rust-update.sh
+echo '=== 7/9: rustup.sh'
+./rustup.sh
 
 echo '=== 8/9: monaco.sh'
 ./monaco.sh

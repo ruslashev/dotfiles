@@ -51,7 +51,7 @@ alias vim='vim -p'
 alias v='vim'
 alias vp='vim -'
 
-alias t='tree'
+alias t='tree --noreport'
 alias b='bat'
 
 if uname -a | grep -q Debian; then

@@ -12,3 +12,5 @@ ln -s ~/dotfiles/vim/coc-settings.json ~/.vim/coc-settings.json
 
 vim -c PlugInstall ~/.vimrc
 
+vim -c CocInstall coc-diagnostic ~/.vimrc
+

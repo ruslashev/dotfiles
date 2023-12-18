@@ -1,4 +1,10 @@
 {
     "suggest.noselect": true,
-    "inlayHint.enable": false
+    "inlayHint.enable": false,
+
+    "rust-analyzer.diagnostics.disabled": [ "inactive-code" ],
+
+    "diagnostic-languageserver.filetypes": {
+        "sh": "shellcheck"
+    }
 }

@@ -114,9 +114,10 @@ endif
 
 let g:mkdp_page_title = '${name}'
 
+let g:gutentags_enabled = 0
 let g:gutentags_ctags_tagfile = '.git/tags'
 
-let g:coc_start_at_startup = 0
+let g:coc_start_at_startup = 1
 
 " Variable passed to shell for it to know it was opened with :shell
 let $FROMVIM=1
@@ -128,6 +129,8 @@ vnoremap <Tab> <Esc>gV
 onoremap <Tab> <Esc>
 inoremap <Tab> <Esc>`^
 inoremap <S-Tab> <Tab>
+
+" nnoremap # *NN
 
 nnoremap <C-p> :Files<CR>
 nnoremap <C-w>r :GFiles<CR>
@@ -147,6 +150,9 @@ nnoremap <Space> za
 
 " :%s/<selected text>/
 vmap <Leader>s "sy:%s/<C-R>"/
+
+" dbg!(<selected text>)
+vmap <Leader>d "sdidbg!(<C-R>")<Esc>
 
 " Search for selected text in directory and open quickfix list
 vmap <Leader>v "sy:grep! <C-R>"<CR>:cw<CR>
@@ -253,7 +259,7 @@ vnoremap gi g<C-a>
 
 " sets =========================================================================
 set autoindent
-set autoread
+" set autoread
 set autowrite                   " Auto write on :make, :shell and others
 set backspace=2                 " Allow backspacing everywhere
 set breakindent                 " for wrapping, continue at indent instead of start of line
@@ -327,7 +333,8 @@ augroup language_specific_overrides
 	au FileType rust    set foldlevelstart=14 foldnestmax=18
 	au FileType python  let b:printf_pattern = 'print("%{}".format(%s))'
 	au FileType c       set commentstring=\/*\ %s\ *\/
-	au FileType c       set noet ts=8 sw=0
+	" au FileType c       set noet ts=8 sw=0
+	au FileType c       set et ts=4 sw=4
 	au FileType cpp     set commentstring=\/\/\ %s
 	" au FileType cpp     set noet ts=8 sw=0
 	au FileType cpp     set noet ts=4

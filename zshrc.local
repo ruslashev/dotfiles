@@ -116,6 +116,10 @@ alias cbr='cargo b --release'
 alias ccl='cargo clean'
 alias ct='cargo test'
 alias ctn='cargo test -j 1 -- --nocapture --test-threads 1'
+alias ctq='cargo test --quiet'
+alias clp='cargo clippy --all-targets --all-features -- -W clippy::pedantic -W clippy::nursery -W clippy::unwrap_used'
+alias cf='cargo fmt'
+alias cfc='cargo fmt --check'
 
 function objd() {
     objdump -d -M intel -C "$1" | vp

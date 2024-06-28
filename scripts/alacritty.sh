@@ -2,5 +2,5 @@
 
 mkdir -p ~/.config/alacritty
 
-ln -s $(pwd)/../alacritty.yml ~/.config/alacritty/alacritty.yml
+ln -s $(pwd)/../alacritty.toml ~/.config/alacritty/alacritty.toml
 

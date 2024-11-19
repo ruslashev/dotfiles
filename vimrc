@@ -154,16 +154,8 @@ vmap <Leader>s "sy:%s/<C-R>"/
 " dbg!(<selected text>)
 vmap <Leader>d "sdidbg!(<C-R>")<Esc>
 
-" Search for selected text in directory and open quickfix list
-vmap <Leader>v "sy:grep! <C-R>"<CR>:cw<CR>
-
-" prompt for text to search and show result in quickfix list
-function! BigSearch()
-	let search = input("rg ")
-	execute ":grep! '" . search . "'"
-	cw
-endfunction
-nmap <Leader>b :call BigSearch()<CR>
+" ripgrep search
+vmap <Leader>r "sy:Rg <C-R>"<CR>
 
 nmap <Leader>m :!make<CR>
 nmap <Leader>r :!cargo run<CR>
@@ -213,6 +205,9 @@ nmap <Leader>qf <Plug>(coc-fix-current)
 nmap <Leader>cl <Plug>(coc-codelens-action)
 
 nmap <silent> <Leader>ah :call CocActionAsync('doHover')<CR>
+
+nnoremap <Leader>ce :CocEnable<CR>
+nnoremap <Leader>cd :CocDisable<CR>
 
 nnoremap <Leader>rg :Rg<CR>
 
